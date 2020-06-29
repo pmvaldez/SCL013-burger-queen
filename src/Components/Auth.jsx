@@ -21,7 +21,7 @@ export default (props) => {
             <input type="email" id="email" onChange={e => setEmail(e.currentTarget.value)}/>
             <label htmlFor="password">Contraseña</label>
             <input type="password" id="password" onChange={e => setPassword(e.currentTarget.value)}/>
-            <button onClick={submit}>ingresar</button>
+            <button onClick={submit}>ingresa</button>
             </div>
         </div>
     )
