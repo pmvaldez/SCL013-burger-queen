@@ -8,9 +8,7 @@ import Registro from './componentes/registro';
 
 
 
-function App() { 
-  const firebase = useFirebaseApp();
-console.log(firebase);
+function App() {
   return (
     <Router>
       <div>
