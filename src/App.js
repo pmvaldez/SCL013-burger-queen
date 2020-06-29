@@ -1,16 +1,36 @@
 import React from 'react';
-//import firebase from './firebase-config';
-//import Contador from './Components/Contador';
-//import { useFirebaseApp } from 'reactfire';
-import Auth from './Components/Auth';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Login from './componentes/login';
+import Chef from './componentes/chef';
+import Mesero from './componentes/mesero';
+import Pedidos from './componentes/pedidos';
+import Registro from './componentes/registro';
+
+
 
 function App() {
   return (
-    
-    <div>
-      <h1>SOY PRUEBA</h1>
-      <Auth />
-    </div>
+    <Router>
+      <div>
+      <Switch>
+        <Route path ="/pedidos"> 
+         <Pedidos />
+        </Route>
+        <Route path ="/mesero"> 
+         <Mesero />
+        </Route>
+        <Route path ="/chef"> 
+         <Chef />
+        </Route>
+        <Route path ="/registro"> 
+         <Registro />
+        </Route>
+        <Route path ="/"> 
+         <Login />
+        </Route>
+      </Switch>
+      </div>
+    </Router>
   );
 }
 
