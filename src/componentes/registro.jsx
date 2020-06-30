@@ -19,11 +19,11 @@ const Registro = () => {
       firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
         const fireUser = firebase.firestore().collection('User')
         const user = {
+          clave: password,
+          mail: email,
           name: name,
-          email: email,
-          password: password,
-          occupation: occupation,
-          user_uid: firebase.auth().currentUser.uid,
+          rol: occupation,
+          //user_uid: firebase.auth().currentUser.uid,
         }
         fireUser.add(user)
         setPage(occupation)
