@@ -1,36 +1,29 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Login from './componentes/login';
-import Chef from './componentes/chef';
-import Mesero from './componentes/mesero';
-import Pedidos from './componentes/pedidos';
-import Registro from './componentes/registro';
+import {firebase} from './firebase'
 
 
 
 function App() {
+
+  React.useEffect(() => {
+
+    const obtenerDatos = async () => {
+        const db = firebase.firestore()
+        try {
+            const data = await db.collection('tareas').get()
+            const arrayData = data.docs.map(doc => ({id: doc.id, ...doc.data()}))
+            console.log(arrayData)      
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    obtenerDatos()
+
+}, [])
   return (
-    <Router>
-      <div>
-      <Switch>
-        <Route path ="/pedidos"> 
-         <Pedidos />
-        </Route>
-        <Route path ="/mesero"> 
-         <Mesero />
-        </Route>
-        <Route path ="/chef"> 
-         <Chef />
-        </Route>
-        <Route path ="/registro"> 
-         <Registro />
-        </Route>
-        <Route path ="/"> 
-         <Login />
-        </Route>
-      </Switch>
-      </div>
-    </Router>
+    <div>
+      <h1>Hola</h1>
+    </div>
   );
 }
 
