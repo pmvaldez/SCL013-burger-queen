@@ -112,7 +112,7 @@ const Login = (props) => {
                             value={pass}
                         />
                          <select className="form-control mb-2" name="function" onChange={e => setOccupation(e.currentTarget.value)}>
-                            <option value=''>Ocupación</option>
+                            <option value=''>Elige Ocupación</option>
                             <option value="kitchen">Cocinero</option>
                             <option value="waiter">Mesero</option>
                          </select>
