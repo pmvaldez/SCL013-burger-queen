@@ -1,14 +1,16 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import { Redirect } from 'react-router';
 import {db, auth} from '../firebase'
 
-const Login = (props) => {
+
+const Login = () => {
 
     const [email, setEmail] = React.useState('')
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
     const [esRegistro, setEsRegistro] = React.useState(true)
-    const [occupation, setOccupation] = React.useState('');
+    const [occupation, setOccupation] = React.useState('')
+    const [page, setPage] = React.useState('');
 
     const procesarDatos = e => {
         e.preventDefault()
@@ -42,7 +44,7 @@ const Login = (props) => {
             setEmail('')
             setPass('')
             setError(null)
-            props.history.push('/admin')
+            //props.history.push('/admin')
         } catch (error) {
             console.log(error)
             if(error.code === 'auth/invalid-email'){
@@ -55,7 +57,7 @@ const Login = (props) => {
                 setError('Contraseña incorrecta')
             }
         }
-    }, [email, pass, props.history])
+    }, [email, pass])
     const registrar = React.useCallback(async() => {
         try {
             const res = await auth.createUserWithEmailAndPassword(email, pass)
@@ -67,8 +69,9 @@ const Login = (props) => {
             })
             setEmail('')
             setPass('')
+            setPage(occupation)
             setError(null)
-            props.history.push('/admin')
+            //props.history.push('/admin')
         } catch (error) {
             console.log(error)
             if(error.code === 'auth/invalid-email'){
@@ -78,7 +81,7 @@ const Login = (props) => {
                 setError('Email ya utilizado')
             }
         }
-    }, [email, pass, occupation, props.history])
+    }, [email, pass, occupation])
     return (
         <div className="mt-5">
             <h3 className="text-center">
@@ -113,11 +116,12 @@ const Login = (props) => {
                         />
                          <select className="form-control mb-2" name="function" onChange={e => setOccupation(e.currentTarget.value)}>
                             <option value=''>Elige Ocupación</option>
-                            <option value="kitchen">Cocinero</option>
+                            <option value="chef">Cocinero</option>
                             <option value="waiter">Mesero</option>
                          </select>
                         <button 
                             className="btn btn-lg btn-dark btn-block"
+                            onClick={() => setPage('login')}
                             type="submit"
                         >
                             {esRegistro ? 'Registrar' : 'Acceder'}
@@ -132,7 +136,11 @@ const Login = (props) => {
                     </form>
                 </div>
             </div>
+            {page === 'chef' ? <Redirect to="/chef" /> : null}
+            {page === 'waiter' ? <Redirect to="/waiter" /> : null}
+            {page === 'login' ? <Redirect to="/" /> : null}
+            
         </div>
     )
 }
-export default withRouter(Login)
+export default Login
