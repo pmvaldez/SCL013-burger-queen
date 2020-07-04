@@ -2,6 +2,7 @@ import React from 'react'
 import {Link, NavLink, withRouter} from 'react-router-dom'
 import {auth} from '../firebase'
 import Login from './Login'
+import Chef from './Chef'
 
 const Navbar = (props) => {
 
@@ -28,9 +29,9 @@ const Navbar = (props) => {
                         props.firebaseUser !== null ? (
                             <NavLink 
                                 className="btn btn-dark mr-2" 
-                                to="/admin"
+                                to="/chef"
                             >
-                                Admin
+                                <Chef />
                             </NavLink>
                         ) : null
                     }
