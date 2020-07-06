@@ -1,64 +1,51 @@
 import React from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import { Redirect } from 'react-router'
 import Login from './components/Login'
 import Waiter from './components/Waiter'
 import Chef from './components/Chef'
-//import Orders from './components/Orders'
-import {db, auth} from './firebase'
-
-
+import Orders from './components/Orders'
+import {auth } from './firebase'
+import Home from './components/Home'
 
 const App = () => {
   const [firebaseUser, setFirebaseUser] = React.useState(false)
-  const [roll, setRoll] = React.useState('')
 
 React.useEffect(() => {
     auth.onAuthStateChanged(user => {
         console.log(user)
         if(user){
             setFirebaseUser(user)
-            let { uid } = user;
-            db.collection("usuarios").get().then(function (querySnapshot) {
-              querySnapshot.forEach(function (doc) {
-                if (doc.data()["user_uid"] === uid) {
-                  setRoll(doc.data().occupation);
-                }
-              });
-            });
         }else{
             setFirebaseUser(null)
-            console.log("no users logged in")
-            setRoll("noUsers");
         }
     })
 }, [])
 
   return firebaseUser !== false ? (
-    <div className="container">
-        <Router>    
+        <Router>
+            <div className="container">
                 <Switch>
-                    {roll === "chef" ? (<>
-                        <Redirect to="/chef" />
-                        <Route path="/chef" component={Chef} />
-                    </>) 
-                    :((roll === "waiter") ? 
-                    (<>
-                        <Redirect to="/waiter" />
-                        <Route path="/waiter" component={Waiter} />
-                    </>) 
-                    : (<> 
-                        <Redirect to="/" />
-                        <Route exact path="/" component={Login} />
-                     </>) 
-                    ) 
-                    }
+                    <Route path="/" exact>
+                      <Login />
+                    </Route>
+                    <Route path="/home">
+                        <Home />
+                    </Route>
+                    <Route path="/waiter">
+                        <Waiter />
+                    </Route>
+                    <Route path="/orders">
+                        <Orders />
+                    </Route>
+                    <Route path="/chef">
+                        <Chef />
+                    </Route>
                 </Switch>
+            </div>
         </Router>
-        </div>
-  ) : (
+    ) : (
       <div>Cargando...</div>
   )
 }
 
-export default App
+export default App 

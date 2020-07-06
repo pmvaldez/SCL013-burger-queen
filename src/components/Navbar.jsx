@@ -1,9 +1,7 @@
 import React from 'react'
 import {Link, NavLink, withRouter} from 'react-router-dom'
 import {auth} from '../firebase'
-import Login from './Login'
-import Chef from './Chef'
-
+//import Login from './Login'
 const Navbar = (props) => {
 
     const cerrarSesion = () => {
@@ -20,42 +18,21 @@ const Navbar = (props) => {
                 <div className="d-flex">
                     <NavLink 
                         className="btn btn-dark mr-2" 
-                        to="/"
+                        to="/home"
                         exact
                     >
                         Inicio
                     </NavLink>
-                    {
-                        props.firebaseUser !== null ? (
-                            <NavLink 
-                                className="btn btn-dark mr-2" 
-                                to="/chef"
-                            >
-                                <Chef />
-                            </NavLink>
-                        ) : null
-                    }
-                    {
-                        props.firebaseUser !== null ? (
                         <button 
                             className="btn btn-dark" 
                             onClick={() => cerrarSesion()}
                         >
                             Cerrar Sesión
                         </button>
-                        ): (
-                        <NavLink 
-                            className="btn btn-dark" 
-                            to="/"
-                        >
-                            <Login />
-                        </NavLink>
-                        )
-                    }
                 </div>
             </div>
         </div>
     )
 }
 
-export default withRouter(Navbar)
+export default withRouter(Navbar) 
