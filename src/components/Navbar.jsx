@@ -1,5 +1,5 @@
-import React from 'react'
-import {Link, NavLink, withRouter} from 'react-router-dom'
+/* import React from 'react'
+import {Link, NavLink} from 'react-router-dom'
 import {auth} from '../firebase'
 import Login from './Login'
 import Chef from './Chef'
@@ -9,7 +9,7 @@ const Navbar = (props) => {
     const cerrarSesion = () => {
         auth.signOut()
             .then(() => {
-                props.history.push('/')
+                props.history.push('/login')
             })
     }
 
@@ -58,4 +58,4 @@ const Navbar = (props) => {
     )
 }
 
-export default withRouter(Navbar)
+export default Navbar */

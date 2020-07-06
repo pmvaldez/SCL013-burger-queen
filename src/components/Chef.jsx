@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from './Navbar'
+
 
 
 const Chef = () => {
     return (
         <div>
-            <Navbar />
+        hol
         </div>
     )
 }
