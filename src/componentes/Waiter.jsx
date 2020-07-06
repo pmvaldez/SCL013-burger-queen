@@ -1,14 +1,13 @@
 import React from 'react'
 import Navbar from './Navbar'
 
-const Chef = () =>{
-    return(
+const Waiter = () => {
+    return (
         <div>
             <Navbar />
-            <h1>SOY EL CHEF</h1>
+            <h1> SOY TERRIBLE waiter</h1>
         </div>
     )
 }
 
-
-export default Chef
+export default Waiter
