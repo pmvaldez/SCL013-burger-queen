@@ -5,10 +5,8 @@ import { auth } from './firebase'
 import Login from './componentes/Login'
 import Waiter from './componentes/Waiter'
 import Chef from './componentes/Chef'
-
 const App = (props) => {
   const [firebaseUser, setFirebaseUser] = React.useState(false)
-
  React.useEffect(() => {
     auth.onAuthStateChanged(user => {
         if(user){
@@ -29,7 +27,6 @@ const App = (props) => {
         }
     })
 }, /* [props.history] */) 
-
   return firebaseUser !== false ? (
     <Router>
     <div>
@@ -50,14 +47,15 @@ const App = (props) => {
       <Route path="/chef" component={ Chef } />
     </div>
   </Router>
-      
     ) : (
       <div>Cargando...</div>
   )
-  });
-  
+}
+export default App
 
-} 
+
+
+
 
 
 
