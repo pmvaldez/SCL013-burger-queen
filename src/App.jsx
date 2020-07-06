@@ -4,7 +4,7 @@ import Waiter from './components/Waiter';
 import Chef from './components/Chef';
 //import Orders from './components/Orders'
 import {db, auth} from './firebase';
-import Register from './components/Register';
+
 import {BrowserRouter as Router, Route, useHistory, Link } from 'react-router-dom';
 
 export default function App() {
