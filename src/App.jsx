@@ -1,11 +1,11 @@
-import React from 'react'
-import {BrowserRouter as Router, Route, useHistory, Link } from 'react-router-dom'
-import Login from './components/Login'
-import Waiter from './components/Waiter'
-import Chef from './components/Chef'
+import React from 'react';
+import Login from './components/Login';
+import Waiter from './components/Waiter';
+import Chef from './components/Chef';
 //import Orders from './components/Orders'
-import {db, auth} from './firebase'
-import Register from './components/Register'
+import {db, auth} from './firebase';
+import Register from './components/Register';
+import {BrowserRouter as Router, Route, useHistory, Link } from 'react-router-dom';
 
 export default function App() {
  
@@ -44,7 +44,6 @@ React.useEffect(() => {
     </Router>
     );
 } 
-
 
 
 
