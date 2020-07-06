@@ -1,62 +1,57 @@
 import React from 'react'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import { Redirect } from 'react-router'
-import Login from './components/Login'
-import Waiter from './components/Waiter'
-import Chef from './components/Chef'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 //import Orders from './components/Orders'
-import {db, auth} from './firebase'
+import { auth } from './firebase'
+import Login from './componentes/Login'
+import Waiter from './componentes/Waiter'
+import Chef from './componentes/Chef'
 
-
-
-const App = () => {
+const App = (props) => {
   const [firebaseUser, setFirebaseUser] = React.useState(false)
-  const [roll, setRoll] = React.useState('')
 
-React.useEffect(() => {
+ React.useEffect(() => {
     auth.onAuthStateChanged(user => {
-        console.log(user)
         if(user){
             setFirebaseUser(user)
-            let { uid } = user;
-            db.collection("usuarios").get().then(function (querySnapshot) {
-              querySnapshot.forEach(function (doc) {
-                if (doc.data()["user_uid"] === uid) {
-                  setRoll(doc.data().occupation);
-                }
-              });
-            });
+            /*  db.collection("usuarios").doc(user.uid).get().then((snap) =>{
+              console.log(snap.data());
+              const employeeData = snap.data();
+              console.log(employeeData);
+          if (employeeData.occupation === "chef"){
+              props.history.push("/chef")
+          } else {
+              props.history.push('/waiter')
+          } 
+        })*/
         }else{
             setFirebaseUser(null)
-            console.log("no users logged in")
-            setRoll("noUsers");
+     /*         props.history.push('/') */
         }
     })
-}, [])
+}, /* [props.history] */) 
 
   return firebaseUser !== false ? (
-    <div className="container">
-        <Router>    
-                <Switch>
-                    {roll === "chef" ? (<>
-                        <Redirect to="/chef" />
-                        <Route path="/chef" component={Chef} />
-                    </>) 
-                    :((roll === "waiter") ? 
-                    (<>
-                        <Redirect to="/waiter" />
-                        <Route path="/waiter" component={Waiter} />
-                    </>) 
-                    : (<> 
-                        <Redirect to="/" />
-                        <Route exact path="/" component={Login} />
-                     </>) 
-                    ) 
-                    }
-                </Switch>
-        </Router>
-        </div>
-  ) : (
+    <Router>
+    <div>
+       {/* <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/waiter">Waiter</Link>
+        </li>
+        <li>
+          <Link to="/chef">Chef</Link>
+        </li>
+      </ul>  */}
+      <hr />
+      <Route exact path="/" component={ Login } />
+      <Route path="/waiter" component={ Waiter } />
+      <Route path="/chef" component={ Chef } />
+    </div>
+  </Router>
+      
+    ) : (
       <div>Cargando...</div>
   )
 }
