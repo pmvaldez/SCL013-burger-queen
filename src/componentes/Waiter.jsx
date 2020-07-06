@@ -5,7 +5,7 @@ const Waiter = () => {
     return (
         <div>
             <Navbar />
-            <h1> SOY TERRIBLE waiter 2.0</h1>
+            <h1> SOY TERRIBLE waiter</h1>
         </div>
     )
 }

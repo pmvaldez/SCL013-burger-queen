@@ -1,5 +1,5 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+//import {withRouter} from 'react-router-dom'
 import {db, auth} from '../firebase'
 
 const Login = (props) => {
@@ -35,6 +35,7 @@ const Login = (props) => {
             login()
         }
     }
+    //funcion de login usuario
     const login = React.useCallback(async () => {
         try {
             const res = await auth.signInWithEmailAndPassword(email, pass)
@@ -42,7 +43,16 @@ const Login = (props) => {
             setEmail('')
             setPass('')
             setError(null)
-            props.history.push('/home')
+            db.collection("usuarios").doc(res.user.uid).get().then((snap) =>{
+                console.log(snap.data());
+                const employeeData = snap.data();
+                console.log(employeeData);
+            if (employeeData.occupation === "chef"){
+                props.history.push("/chef")
+            } else {
+                props.history.push('/waiter')
+            } })
+            
         } catch (error) {
             console.log(error)
             if(error.code === 'auth/invalid-email'){
@@ -60,7 +70,7 @@ const Login = (props) => {
         try {
             const res = await auth.createUserWithEmailAndPassword(email, pass)
             console.log(res.user)
-            await db.collection('usuarios').doc(res.user.email).set({
+            await db.collection('usuarios').doc(res.user.uid).set({
                 email: res.user.email,
                 uid: res.user.uid,
                 occupation: occupation
@@ -68,7 +78,15 @@ const Login = (props) => {
             setEmail('')
             setPass('')
             setError(null)
-            props.history.push('/home')
+            db.collection("usuarios").doc(res.user.uid).get().then((snap) =>{
+                console.log(snap.data());
+                const employeeData = snap.data();
+                console.log(employeeData);
+            if (employeeData.occupation === "chef"){
+                props.history.push("/chef")
+            } else {
+                props.history.push('/waiter')
+            } })
         } catch (error) {
             console.log(error)
             if(error.code === 'auth/invalid-email'){
@@ -112,8 +130,8 @@ const Login = (props) => {
                             value={pass}
                         />
                          <select className="form-control mb-2" name="function" onChange={e => setOccupation(e.currentTarget.value)}>
-                            <option value=''>Ocupación</option>
-                            <option value="kitchen">Cocinero</option>
+                            <option value=''>Elige Ocupación</option>
+                            <option value="chef">Cocinero</option>
                             <option value="waiter">Mesero</option>
                          </select>
                         <button 
@@ -135,4 +153,4 @@ const Login = (props) => {
         </div>
     )
 }
-export default withRouter(Login)
+export default Login

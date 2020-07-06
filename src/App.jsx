@@ -1,48 +1,56 @@
 import React from 'react'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import Login from './components/Login'
-import Waiter from './components/Waiter'
-import Chef from './components/Chef'
-import Orders from './components/Orders'
-import {auth } from './firebase'
-import Home from './components/Home'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
+//import Orders from './components/Orders'
+import { auth } from './firebase'
+import Login from './componentes/Login'
+import Waiter from './componentes/Waiter'
+import Chef from './componentes/Chef'
 
-const App = () => {
+const App = (props) => {
   const [firebaseUser, setFirebaseUser] = React.useState(false)
 
-React.useEffect(() => {
+ React.useEffect(() => {
     auth.onAuthStateChanged(user => {
-        console.log(user)
         if(user){
             setFirebaseUser(user)
+            /*  db.collection("usuarios").doc(user.uid).get().then((snap) =>{
+              console.log(snap.data());
+              const employeeData = snap.data();
+              console.log(employeeData);
+          if (employeeData.occupation === "chef"){
+              props.history.push("/chef")
+          } else {
+              props.history.push('/waiter')
+          } 
+        })*/
         }else{
             setFirebaseUser(null)
+     /*         props.history.push('/') */
         }
     })
-}, [])
+}, /* [props.history] */) 
 
   return firebaseUser !== false ? (
-        <Router>
-            <div className="container">
-                <Switch>
-                    <Route path="/" exact>
-                      <Login />
-                    </Route>
-                    <Route path="/home">
-                        <Home />
-                    </Route>
-                    <Route path="/waiter">
-                        <Waiter />
-                    </Route>
-                    <Route path="/orders">
-                        <Orders />
-                    </Route>
-                    <Route path="/chef">
-                        <Chef />
-                    </Route>
-                </Switch>
-            </div>
-        </Router>
+    <Router>
+    <div>
+       {/* <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/waiter">Waiter</Link>
+        </li>
+        <li>
+          <Link to="/chef">Chef</Link>
+        </li>
+      </ul>  */}
+      <hr />
+      <Route exact path="/" component={ Login } />
+      <Route path="/waiter" component={ Waiter } />
+      <Route path="/chef" component={ Chef } />
+    </div>
+  </Router>
+      
     ) : (
       <div>Cargando...</div>
   )
