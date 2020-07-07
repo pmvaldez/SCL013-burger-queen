@@ -1,8 +1,15 @@
-body {
+html,body{
+    margin:0px;
+    height:100%;
+    }
+.fondoOne {
     background-image: url(../imagen/fondo.jpg);
     background-repeat: no-repeat;
     background-size: 100% 101vh;
-}
+    margin-top: -3em;
+    background-size: 100% 101vh;
+    height: 626px;
+} 
 .btn-start {
     background-color:  #D5C416;
 }
@@ -15,4 +22,10 @@ h3 {
 .btn {
     font-weight: 560;
     color: #000000;
+}
+hr {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
 }
