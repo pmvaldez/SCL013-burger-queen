@@ -108,7 +108,7 @@ const Login = (props) => {
     }, [email, pass, occupation, props.history])
     return (
         <div className="container mt-5">
-            <img class="img-responsive center-block mx-auto d-block" alt="logo" src={logo}/>
+            <img className="img-responsive center-block mx-auto d-block" alt="logo" src={logo}/>
 {/*             <h3 className="text-center">
                 {
                     esRegistro ? 'Registro' : 'Login'
