@@ -2,6 +2,7 @@ import React from 'react'
 //import {withRouter} from 'react-router-dom'
 import {db, auth} from '../firebase'
 import '../estilos/login.css'
+import logo from '../imagen/logo.jpg'
 
 const Login = (props) => {
 
@@ -29,7 +30,8 @@ const Login = (props) => {
             return
         }
         if(!occupation.trim()){
-            setError('Selecciona tu ocupación!')
+            console.log('Selecciona una ocupación')
+            setError('Selecciona una ocupación!')
             return
         }
         console.log('correcto...')
@@ -107,12 +109,13 @@ const Login = (props) => {
     }, [email, pass, occupation, props.history])
     return (
         <div className="container mt-5">
-            <h3 className="text-center">
+            <img className="img-responsive center-block mx-auto d-block" alt="logo" src={logo}/>
+{/*             <h3 className="text-center">
                 {
                     esRegistro ? 'Registro' : 'Login'
                 }
             </h3>
-            <hr/>
+ */}            <hr/>
             <div className="row justify-content-center">
                 <div className="col-12 col-sm-8 col-md-6 col-xl-4">
                     <form onSubmit={procesarDatos}>
@@ -143,13 +146,13 @@ const Login = (props) => {
                             <option value="waiter">Mesero</option>
                          </select>
                         <button 
-                            className="btn btn-lg btn-block btnstart"
+                            className="btn btn-lg btn-block btn-start"
                             type="submit"
                         >
                             {esRegistro ? 'Registrar' : 'Acceder'}
                         </button>
                         <button 
-                            className="btn btn-sm btn-info btn-block"
+                            className="btn btn-sm btn-block btn-register "
                             type="button"
                             onClick={() => setEsRegistro(!esRegistro)}
                         >

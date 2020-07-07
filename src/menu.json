@@ -1,0 +1,92 @@
+[{
+    "menuDesayuno": {
+      "products": [{
+          "id": "01",
+          "nombre": "Café Americano",
+          "valor": "$500"
+      }, {
+          "id": "02",
+          "nombre": "Café con leche",
+            "valor": "$700"
+      }, {
+          "id": "03",
+          "nombre": "Sandwich de Jamón y Queso",
+          "valor": " $2000"
+      }, {
+          "id": "04",
+          "nombre": "Juego de Frutas Naturales",
+          "valor": "$1000"
+      }
+  ]
+  },
+  "menuAlmuerzo": {
+    "Hamburguesas": [{
+        "id": "05",
+        "nombre": "Hamburguesa de Res (Simple)",
+        "valor": "$5000"
+    }, {
+        "id": "06",
+        "nombre": "Hamburguesa Vegetariana (Simple)",
+        "valor": "$5000"
+    }, {
+        "id": "07",
+        "nombre": "Hamburguesa de Pollo (Simple)",
+        "valor": "$5000"
+    }, {
+        "id": "08",
+        "nombre": "Hamburguesa de Res (Doble)",
+        "valor": "$8000"
+    }, {
+        "id": "10",
+        "nombre": "Hamburguesa Vegetariana (Doble)",
+        "valor": "$8000"
+    }, {
+        "id": "11",
+        "nombre": "Hamburguesa de Pollo (Doble)",
+        "valor": "$8000"
+    }
+  ],
+  "Acompañamiento": [{
+    "id": "08",
+    "nombre": "Papas Fritas",
+    "valor": "$3000"
+  }, {
+    "id": "09",
+    "nombre": "Aros de Cebolla (6 unidades)",
+    "valor": "$4000"
+  }
+  ],
+  "bebestibles": [{
+    "id":"10",
+    "nombre": "Agua 500 ml",
+    "valor": "$1000"
+  }, {
+    "id": "11",
+    "nombre": "Bebida 500ml",
+    "valor": "$2000"
+  }, {
+    "id": "12",
+    "nombre": "Agua 750ml",
+    "valor": "$3000"
+  }, {
+    "id": "13",
+    "nombre": "Bebida 750ml",
+    "valor": "$2000"
+  }
+  ],
+  "extras": [{
+    "id": "14",
+    "nombre": "Huevo",
+    "valor": "$900"
+  }, {
+    "id": "15",
+    "nombre": "Queso",
+    "valor": "$900"
+  }, {
+    "id": "16",
+    "nombre": "Palta",
+    "valor": "$400"
+  }]
+}
+
+}]

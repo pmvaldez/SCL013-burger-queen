@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link, NavLink, withRouter} from 'react-router-dom'
+import {NavLink, withRouter} from 'react-router-dom'
 import {auth} from '../firebase'
 import Login from './Login'
 
@@ -14,15 +14,15 @@ const Navbar = (props) => {
 
     return (
         <div className="navbar navbar-dark bg-dark">
-            <Link to="/" className="navbar-brand">React Admin</Link>
+            <h2>Cocinero</h2> 
             <div>
                 <div className="d-flex">
                     <NavLink 
                         className="btn btn-dark mr-2" 
-                        to="/"
+                        to="/Orders"
                         exact
                     >
-                        Inicio
+                        Pedidos
                     </NavLink>
 {/*                     {
                         props.firebaseUser !== null ? (
