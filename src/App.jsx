@@ -51,6 +51,7 @@ const App = (props) => {
       <div>Cargando...</div>
   )
 }
+<<<<<<< HEAD
 export default App
 
 
@@ -60,3 +61,7 @@ export default App
 
 
 
+=======
+
+export default App 
+>>>>>>> genesis/master
