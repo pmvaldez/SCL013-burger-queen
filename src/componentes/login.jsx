@@ -27,6 +27,10 @@ const Login = (props) => {
             setError('6 o más carácteres en pass')
             return
         }
+        if(!occupation.trim()){
+            setError('Selecciona tu ocupación!')
+            return
+        }
         console.log('correcto...')
         setError(null)
         if(esRegistro){
@@ -43,6 +47,7 @@ const Login = (props) => {
             setEmail('')
             setPass('')
             setError(null)
+            setOccupation('')
             db.collection("usuarios").doc(res.user.uid).get().then((snap) =>{
                 console.log(snap.data());
                 const employeeData = snap.data();
@@ -66,6 +71,7 @@ const Login = (props) => {
             }
         }
     }, [email, pass, props.history])
+
     const registrar = React.useCallback(async() => {
         try {
             const res = await auth.createUserWithEmailAndPassword(email, pass)
@@ -78,6 +84,7 @@ const Login = (props) => {
             setEmail('')
             setPass('')
             setError(null)
+            setOccupation('')
             db.collection("usuarios").doc(res.user.uid).get().then((snap) =>{
                 console.log(snap.data());
                 const employeeData = snap.data();
