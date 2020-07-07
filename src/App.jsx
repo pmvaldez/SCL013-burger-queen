@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 //import Orders from './components/Orders'
 import { auth } from './firebase'
@@ -22,11 +22,22 @@ const App = (props) => {
 
   return firebaseUser !== false ? (
     <Router>
-    <div>
+    <Fragment>
+       {/* <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/waiter">Waiter</Link>
+        </li>
+        <li>
+          <Link to="/chef">Chef</Link>
+        </li>
+      </ul>  */}
       <Route exact path="/" component={ Login } />
       <Route path="/waiter" component={ Waiter } />
       <Route path="/chef" component={ Chef } />
-    </div>
+    </Fragment>
   </Router>
       
     ) : (
