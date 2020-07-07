@@ -1,6 +1,7 @@
 import React from 'react'
 //import {withRouter} from 'react-router-dom'
 import {db, auth} from '../firebase'
+import '../estilos/login.css'
 
 const Login = (props) => {
 
@@ -105,7 +106,7 @@ const Login = (props) => {
         }
     }, [email, pass, occupation, props.history])
     return (
-        <div className="mt-5">
+        <div className="container mt-5">
             <h3 className="text-center">
                 {
                     esRegistro ? 'Registro' : 'Login'
@@ -142,7 +143,7 @@ const Login = (props) => {
                             <option value="waiter">Mesero</option>
                          </select>
                         <button 
-                            className="btn btn-lg btn-dark btn-block"
+                            className="btn btn-lg btn-block btnstart"
                             type="submit"
                         >
                             {esRegistro ? 'Registrar' : 'Acceder'}
