@@ -1,13 +1,25 @@
 import React from 'react'
 import Navbar from './Navbar'
+import style from '../estilos/waiter.module.css'
+//import  menu from '../data.json'
+import Breakfast from './Breakfast'
+
+// console.log(style)
 
 const Waiter = () => {
+
+    //const data = menu
+    //console.log(data)
+    
     return (
-        <div>
+        <div className={style.body} >
             <Navbar />
-            <h1> SOY TERRIBLE waiter</h1>
+            <Breakfast />
+
+            
         </div>
     )
 }
 
 export default Waiter
+
