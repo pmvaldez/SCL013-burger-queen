@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 //import Orders from './components/Orders'
 import { auth } from './firebase'
@@ -11,25 +11,20 @@ const App = (props) => {
     auth.onAuthStateChanged(user => {
         if(user){
             setFirebaseUser(user)
-            /*  db.collection("usuarios").doc(user.uid).get().then((snap) =>{
-              console.log(snap.data());
-              const employeeData = snap.data();
-              console.log(employeeData);
-          if (employeeData.occupation === "chef"){
-              props.history.push("/chef")
-          } else {
-              props.history.push('/waiter')
-          } 
-        })*/
         }else{
             setFirebaseUser(null)
-     /*         props.history.push('/') */
+
         }
     })
+<<<<<<< HEAD
 }, /* [props.history] */) 
+=======
+}, ) 
+
+>>>>>>> genesis/master
   return firebaseUser !== false ? (
     <Router>
-    <div>
+    <Fragment>
        {/* <ul>
         <li>
           <Link to="/">Home</Link>
@@ -41,11 +36,10 @@ const App = (props) => {
           <Link to="/chef">Chef</Link>
         </li>
       </ul>  */}
-      <hr />
       <Route exact path="/" component={ Login } />
       <Route path="/waiter" component={ Waiter } />
       <Route path="/chef" component={ Chef } />
-    </div>
+    </Fragment>
   </Router>
     ) : (
       <div>Cargando...</div>

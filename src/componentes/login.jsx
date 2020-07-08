@@ -74,6 +74,7 @@ const Login = (props) => {
             }
         }
     }, [email, pass, props.history])
+
     const registrar = React.useCallback(async() => {
         try {
             const res = await auth.createUserWithEmailAndPassword(email, pass)
@@ -107,6 +108,8 @@ const Login = (props) => {
         }
     }, [email, pass, occupation, props.history])
     return (
+    <div className="fondoOne">
+        <hr/><hr/>
         <div className="container mt-5">
             <img className="img-responsive center-block mx-auto d-block" alt="logo" src={logo}/>
 {/*             <h3 className="text-center">
@@ -114,7 +117,7 @@ const Login = (props) => {
                     esRegistro ? 'Registro' : 'Login'
                 }
             </h3>
- */}            <hr/>
+ */}
             <div className="row justify-content-center">
                 <div className="col-12 col-sm-8 col-md-6 col-xl-4">
                     <form onSubmit={procesarDatos}>
@@ -161,6 +164,7 @@ const Login = (props) => {
                 </div>
             </div>
         </div>
+    </div>
     )
 }
 export default Login
