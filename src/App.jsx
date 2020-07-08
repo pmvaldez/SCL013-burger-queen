@@ -16,12 +16,8 @@ const App = (props) => {
 
         }
     })
-<<<<<<< HEAD
-}, /* [props.history] */) 
-=======
 }, ) 
 
->>>>>>> genesis/master
   return firebaseUser !== false ? (
     <Router>
     <Fragment>
