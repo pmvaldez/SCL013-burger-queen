@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import '../estilos/menu.css'
 import  info from '../data.json'
 
 const Menu = () => {
@@ -7,18 +8,18 @@ const Menu = () => {
 
     return (
         <div>
-            <section>
-                <aside className="p">
-                <button type="button" className="btn btn-dark m-3" onClick={() => setType('breakfast')}>
+            <section className="tabla-responsive">
+                <aside className="float-right">
+                <button type="button" className="text-white btn btn-dark m-1" onClick={() => setType('breakfast')}>
                 Desayuno
                 </button>
-                <button type="button" className="btn btn-dark m-3" onClick={() => setType('lunch')}>
+                <button type="button" className="text-white btn btn-dark m-1" onClick={() => setType('lunch')}>
                 Almuerzo
                 </button>
-                <button type="button" className="btn btn-dark m-3" onClick={() => setType('drinks')}>
+                <button type="button" className="text-white btn btn-dark m-1" onClick={() => setType('drinks')}>
                 Bebidas
                 </button>
-                <button type="button" className="btn btn-dark m-3" onClick={() => setType('additional')}>
+                <button type="button" className="text-white btn btn-dark m-1" onClick={() => setType('additional')}>
                 Adicional
                 </button>
                 </aside>
