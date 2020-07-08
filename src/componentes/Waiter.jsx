@@ -1,32 +1,33 @@
 import React from 'react'
 import Navbar from './Navbar'
 import style from '../estilos/waiter.module.css'
-//import  menu from '../data.json'
-import Breakfast from './Breakfast'
-import Lunch from './Lunch'
+//import Breakfast from './Breakfast'
+import Menu from './Menu'
+//import Menu from './Menu'
 
-// console.log(style)
 
 
 const Waiter = () => {
 
-    //const data = menu
-    //console.log(data)
-    
     return (
         <div className={style.body} >
             <Navbar />
-
-            <input className="form-control mb-2" aria-label="Small" placeholder="nombre cliente"/>
-            <input className="form-control mb-2 sm" placeholder="número de mesa"/>
-            
-            <div className="btn-group btn-group-lg">
-                <button type="button" className="btn btn-dark" >Desayunos</button>
-                <button type="button" className="btn btn-dark">Almuerzos</button>
-                <button type="button" className="btn btn-dark">Extras</button>
+            <div className="form-group mb-2 row">
+                <div className="input-group input-group-sm mb-1">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Nombre del Cliente:</span>
+                    </div>
+                    <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                </div>
+                <div className="input-group input-group-sm mb-1">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="inputGroup-sizing-sm">Numero de Mesa:</span>
+                    </div>
+                    <input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+                </div>
             </div>
-          <Breakfast />  
-          <Lunch /> 
+            
+            <Menu />       
         </div>
     )
 }
