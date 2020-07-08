@@ -3,23 +3,19 @@ import  data from '../data.json'
 
 const Breakfast = () => {
 
-    const [item, setItem] = React.useState([])
+    //const [item, setItem] = React.useState([])
 
-    React.useEffect(() => {
-        const  desayunos = data.Desayunos;
-        console.log(desayunos);
-        setItem(desayunos)
-    },[])
-    
+    const  people = data.Desayunos;
+
+
     return (
-            <div>
-                <ul> {
-                    item.map(element =>  
-                    <li key={element.id}> {element.name} </li>
-                )
-            }
-                </ul>
-            </div>
-        )
+        <div>
+            {people.filter(person => person.type === 'lunch').map(filteredPerson => (
+            <li>
+                {filteredPerson.name}
+            </li>
+            ))}
+        </div>
+      );
 }
 export default Breakfast
