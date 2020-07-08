@@ -8,27 +8,27 @@ const Menu = () => {
     return (
         <div>
             <section>
-                <h1 className="text-center text-black">LISTA DE PRODUCTOS</h1>
                 <aside className="p">
-                <button type="button" className="btn btn-success m-3" onClick={() => setType('breakfast')}>
+                <button type="button" className="btn btn-dark m-3" onClick={() => setType('breakfast')}>
                 Desayuno
                 </button>
-                <button type="button" className="btn btn-success m-3" onClick={() => setType('lunch')}>
+                <button type="button" className="btn btn-dark m-3" onClick={() => setType('lunch')}>
                 Almuerzo
                 </button>
-                <button type="button" className="btn btn-success m-3" onClick={() => setType('drinks')}>
+                <button type="button" className="btn btn-dark m-3" onClick={() => setType('drinks')}>
                 Bebidas
                 </button>
-                <button type="button" className="btn btn-success m-3" onClick={() => setType('additional')}>
-                Additional
+                <button type="button" className="btn btn-dark m-3" onClick={() => setType('additional')}>
+                Adicional
                 </button>
                 </aside>
             </section>
-            <div>
+            <div className="btn-group-vertical">
                 {data.filter(elemen => elemen.type === type ).map((filteredelemen, i) => (
-                    <li key={i}>
+                    <button className="btn btn-warning mt-2" key={i}>{filteredelemen.name} ${filteredelemen.price}</button>
+ /*                    <li key={i}>
                         {filteredelemen.name}
-                    </li>
+                    </li> */
                 ))}
             </div>
         </div>
