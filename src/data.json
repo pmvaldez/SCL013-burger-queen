@@ -1,5 +1,5 @@
 {
-  "Desayunos": [{
+  "Menu": [{
     "id": "b01",
     "name": "Café Americano",
     "price": 500,
@@ -19,8 +19,7 @@
     "name": "Jugo de frutas natural",
     "price": 700,
     "type": "breakfast"
-  }],
-  "Almuerzos": [{
+  },{
     "id": "l01",
     "name": "Hamburguesa simple",
     "price": 1000,
@@ -40,36 +39,39 @@
     "name": "Aros de cebolla",
     "price": 500,
     "type": "lunch"
-  }],
-  "bebestibles": [{
+  }, {
     "id": "l05",
     "name": "Agua 500ml",
     "price": 500,
-    "type": "lunch"
+    "type": "drinks"
   },{
     "id": "l06",
     "name": "Agua 750ml",
     "price": 700,
-    "type": "lunch"
+    "type": "drinks"
   },{
     "id": "l07",
     "name": "Bebida/gaseosa 500ml",
     "price": 700,
-    "type": "lunch"
+    "type": "drinks"
   },{
     "id": "l08",
     "name": "Bebida/gaseosa 750ml",
     "price": 1000,
-    "type": "lunch"
-  }],
-  "Adicional": [{
+    "type": "drinks"
+  }, {
     "id": "e00",
     "name": "Huevo",
-    "price": 100
+    "price": 100,
+    "type": "additional"
   },{
     "id": "e01",
     "name": "Queso",
-    "price": 100
-  }]
+    "price": 100,
+    "type": "additional"
+  }
+]
 }
+
+
 
