@@ -13,13 +13,23 @@ const Breakfast = () => {
     
     return (
             <div>
-                <ul> {
+                {
                     item.map(element =>  
-                    <li key={element.id}> {element.name} </li>
+                         <button className="btn btn-warning mt-2" key={element.id}>{element.name} ${element.price}</button>   
                 )
-            }
-                </ul>
+                 }
+              
+               {/*  {item.map((element) => {
+                    //console.log(element.name);
+                    return (
+                    <div >
+                        <button className="btn btn-warning mt-2" key={element.id}>{element.name} ${element.price}</button>   
+                    </div>
+                    );
+                })} */}
             </div>
         )
 }
 export default Breakfast
+
+
