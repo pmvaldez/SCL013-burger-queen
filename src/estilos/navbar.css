@@ -1,0 +1,37 @@
+@font-face{
+    font-family: 'Amazin';
+    src: url(./AmazingKids.ttf);
+}
+
+.navLogo{
+    width: 20%;
+    margin-right: 18%;
+}
+
+.textNav{
+    width: 20%;
+    color: white;
+    font-family: 'Amazin';
+    font-size: 62px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+ .btnclose{
+    width: 85px;
+    height: 75px;
+    margin-top: 13px;
+}  
+
+.btnNavpedido{
+    color: black;
+    background-color: #D5C416;
+    border-radius: 10px;
+    width: 137px;
+    height: 45px;
+    margin-top: 29px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 11px;
+
+}
