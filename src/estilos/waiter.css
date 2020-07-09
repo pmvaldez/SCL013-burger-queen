@@ -14,3 +14,6 @@ body {
     margin-right: auto;
     margin-left: auto;
   } 
+  .bg-dark {
+    background-color: #000000!important;
+}

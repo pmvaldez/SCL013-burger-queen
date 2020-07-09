@@ -26,7 +26,7 @@ const Menu = () => {
             </section>
             <div className="btn-group-vertical">
                 {data.filter(elemen => elemen.type === type ).map((filteredelemen, i) => (
-                    <button className="btn btn-warning mt-2" key={i}>{filteredelemen.name} ${filteredelemen.price}</button>
+                    <button className="btn btn-color mt-2" key={i}>{filteredelemen.name} ${filteredelemen.price}</button>
  /*                    <li key={i}>
                         {filteredelemen.name}
                     </li> */
