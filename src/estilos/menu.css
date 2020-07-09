@@ -12,6 +12,20 @@
 .mt-2, .my-2 {
    margin-top: 1.5rem!important;
 }
+.ctnproductos{
+    margin-top: 12px;
+}
 .listaprecios{
     background-color: #887E36;
+    border-radius: 7px;
+    padding: 27px;
+    height: 500px;
+}
+
+.inputMesa{
+    width: 50px;
+}
+
+h1{
+    color: white;
 }

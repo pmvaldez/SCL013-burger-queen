@@ -7,7 +7,7 @@ const ResumenPedido = (props) => {
 
         <Fragment>
             <ul>
-                <li>{props.nombre}</li>
+                <li className="h5">{props.nombre}</li>
                 <p>{props.total} </p>
             </ul>
 

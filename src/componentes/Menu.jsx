@@ -36,7 +36,7 @@ const Menu = () => {
     return (
         <div className="container">
             <div className="row">  
-            <div className="col-auto">  
+            <div className="col-auto ctnproductos">  
                  <section>
                 <aside className="btn-group">
                 <button type="button" className="text-white btn btn-dark m-1" onClick={() => setType('breakfast')}>
@@ -63,13 +63,13 @@ const Menu = () => {
                 ))}
                 </div>
                 </div>
-         <div className="col-auto">      
+         <div className="col-auto ctnproductos">      
         <section className="listaprecios">
             <aside>
                     <label> Nombre <input type="text" onChange={nombreCliente} placeholder='Ignacio' value={nombre} /> </label>
-                    <label> N° de Mesa <input className="form-control form-control-sm" type="text" onChange={numeroMesa} placeholder='1' value={mesa} /> </label>
+                    <label> N° de Mesa <input className="inputMesa" type="text" onChange={numeroMesa} placeholder='1' value={mesa} /> </label>
             <div className= "container">
-            <h3>Pedido</h3>
+            <h1 className="text-center ">Pedido</h1>
             {
               agregar.map((filteredelemen, i) => {
                 return (
@@ -79,7 +79,7 @@ const Menu = () => {
                 )
               })
             }
-            <h1>Total= ${suma}</h1>
+            <h3>Total= ${suma}</h3>
             <button className="btn btn-dark" type="submit">
               Enviar
             </button>
