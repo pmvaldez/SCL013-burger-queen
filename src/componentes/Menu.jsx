@@ -56,7 +56,7 @@ const Menu = () => {
           
             <div className="btn-group-vertical">
                 {data.filter(elemen => elemen.type === type ).map((filteredelemen, i) => (
-                    <button onClick={lista} value={filteredelemen.price} name={filteredelemen.name}className="btn btn-warning mt-2" key={i}>{filteredelemen.name} ${filteredelemen.price}</button>
+                    <button onClick={lista} value={filteredelemen.price} name={filteredelemen.name}className="btn btn-color mt-2" key={i}>{filteredelemen.name} ${filteredelemen.price}</button>
  /*                    <li key={i}>
                         {filteredelemen.name}
                     </li> */
@@ -64,7 +64,7 @@ const Menu = () => {
                 </div>
                 </div>
          <div className="col-auto">      
-        <section >
+        <section className="listaprecios">
             <aside>
                     <label> Nombre <input type="text" onChange={nombreCliente} placeholder='Ignacio' value={nombre} /> </label>
                     <label> N° de Mesa <input className="form-control form-control-sm" type="text" onChange={numeroMesa} placeholder='1' value={mesa} /> </label>
