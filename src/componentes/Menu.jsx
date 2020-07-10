@@ -18,7 +18,7 @@ const Menu = () => {
       setMesa(e.target.value);
     };
 
-    const lista= (e) => {
+    const pedido= (e) => {
         const valor = e.target.value;
         const precioPedido = parseInt(valor);
         const nombrePedido = e.target.name;
@@ -56,7 +56,7 @@ const Menu = () => {
           
             <div className="btn-group-vertical">
                 {data.filter(elemen => elemen.type === type ).map((filteredelemen, i) => (
-                    <button onClick={lista} value={filteredelemen.price} name={filteredelemen.name}className="btn btn-color mt-2" key={i}>{filteredelemen.name} ${filteredelemen.price}</button>
+                    <button onClick={pedido} value={filteredelemen.price} name={filteredelemen.name}className="btn btn-color mt-2" key={i}>{filteredelemen.name} ${filteredelemen.price}</button>
  /*                    <li key={i}>
                         {filteredelemen.name}
                     </li> */
