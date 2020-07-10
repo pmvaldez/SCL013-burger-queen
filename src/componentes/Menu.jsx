@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import '../estilos/menu.css'
 import  info from '../data.json'
 import ResumenPedido from "./ResumenPedido"
+import {db} from '../firebase'
 
 const Menu = () => {
     const  data = info.Menu;
@@ -24,14 +25,31 @@ const Menu = () => {
         const nombrePedido = e.target.name;
         
     //acumulacion de pedido
-    agregar.push([`${nombrePedido} $${precioPedido}`]);
+    agregar.push(`${nombrePedido} $${precioPedido}`);
     setAgregar([...agregar]);
+    console.log(agregar)
+   
+
 
     sumando.push(precioPedido)
     setSumando([...sumando])
     } ;
 
    const suma = sumando.reduce((a, b) => a + b, 0);
+
+   const agregarPedido= async (e) => {
+    e.preventDefault()
+    try {
+        const nuevoPedido = {
+           pedido: agregar
+
+        }
+        const data = await db.collection("pedidos").add(nuevoPedido);
+    } catch (error) {
+        console.log(error)
+    }
+    
+}
 
     return (
         <div className="container">
@@ -70,8 +88,7 @@ const Menu = () => {
                     <label> N° de Mesa <input className="inputMesa" type="text" onChange={numeroMesa} placeholder='1' value={mesa} /> </label>
             <div className= "container">
             <h1 className="text-center ">Pedido</h1>
-            {
-              agregar.map((filteredelemen, i) => {
+            {agregar.map((filteredelemen, i) => {
                 return (
                   <ul key={i} >
                     <ResumenPedido nombre={filteredelemen} />
@@ -80,7 +97,7 @@ const Menu = () => {
               })
             }
             <h3>Total= ${suma}</h3>
-            <button className="btn btn-dark" type="submit">
+            <button className="btn btn-dark" type="submit" onClick={agregarPedido}>
               Enviar
             </button>
           </div>
@@ -91,5 +108,4 @@ const Menu = () => {
         </div>  
     )
 }
-
 export default Menu
