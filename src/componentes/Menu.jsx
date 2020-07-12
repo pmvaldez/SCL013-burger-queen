@@ -11,6 +11,7 @@ const Menu = () => {
     const [nombre, setNombre] = React.useState('');
     const [mesa, setMesa] = React.useState('');
   
+  
     const nombreCliente = (e) => {
       setNombre(e.target.value);
     };
@@ -73,8 +74,10 @@ const Menu = () => {
             {
               agregar.map((filteredelemen, i) => {
                 return (
-                  <ul key={i} >
+                  <ul className="mw-100" key={i} >
+                    <button>+</button><input className="w-25"  placeholder="1"></input><button>-</button>
                     <ResumenPedido nombre={filteredelemen} />
+                    <button className="btn btn-warning m-3">Borrar</button>
                   </ul>
                 )
               })
