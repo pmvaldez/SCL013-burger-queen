@@ -4,17 +4,12 @@ import '../estilos/waiter.css'
 //import Breakfast from './Breakfast'
 import Menu from './Menu'
 
-
-
-
 const Waiter = () => {
-
-
 
     return (
         <div>
             <Navbar />      
-                    <Menu />      
+            <Menu />      
                    
         </div>
     )
