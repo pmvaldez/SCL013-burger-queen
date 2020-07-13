@@ -23,8 +23,7 @@ const ResumenPedido = (props) => {
     };
 
     const aumentar = () => {
-       setCont(cont + 1)
-      
+          setCont(cont + 1)  
     }
 
     const disminuir = () => {
@@ -102,7 +101,7 @@ const ResumenPedido = (props) => {
                                 props.resumen.map((item,i) => {
                                     return(
                                     <tr key={i}>
-                                        <th scope="col "><button onClick={() => aumentar(i)}>+</button></th>
+                                        <th scope="col "><button onClick={aumentar}>+</button></th>
                                         <th scope="col"><p className="cantidad">{cont}</p></th> 
                                         <th scope="col "><button onClick={() => disminuir()}>-</button></th>
                                         <th scope="col ">{item.nombreProducto}</th>
@@ -110,11 +109,14 @@ const ResumenPedido = (props) => {
                                         <th scope="col mr-8 ">$preciototal</th>
                                         <th scope="col"><button className="btn btn-warning" id={i} onClick={deleteItem}> Eliminar</button></th> 
                                     </tr>
+                                    
                                         )
                                     })
                                 }
-
+                               <tr><th colSpan={7} className="textTotal"><p className="text">Total: R${props.resumen.reduce((acc, item) => acc + item.precioProducto, 0)} </p>
+                                </th></tr>
                             </tbody>
+                            
                         </table>
                     </div> 
                 </aside>
