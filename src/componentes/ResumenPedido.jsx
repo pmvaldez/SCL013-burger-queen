@@ -91,8 +91,7 @@ const ResumenPedido = (props) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {
-                                props.resumen.map((item,i) => {
+                                {props.resumen.map((item,i) => {
                                     return(
                                     <tr key={i}>
                                         <th scope="col "><button onClick={() => aumentar(i)}>+</button></th>
