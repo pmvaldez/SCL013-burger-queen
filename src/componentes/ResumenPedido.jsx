@@ -38,8 +38,15 @@ const ResumenPedido = (props) => {
         const posicion= e.target.id;
         const array = props.resumen.splice(posicion,1 ) 
         setResult(...array)
-     }
-
+    }
+    
+/*     const totalOrden = () => {
+       let totalprecio = 0;
+          if (props.resumen.length !== 0) {
+          totalprecio = props.resumen.reduce((a, b) => a + b, 0)
+        }
+        return totalprecio
+    } 
        
   /*     const pedido = (nombreProducto, precioProducto) =>{
         //console.log('soy el pedido', pedido)
@@ -113,7 +120,8 @@ const ResumenPedido = (props) => {
                                         )
                                     })
                                 }
-
+                                <tr><th colSpan={7} className="textTotal"><p className="text">Total: ${props.resumen.reduce((acc, item) => acc + item.precioProducto, 0)} </p>
+                                </th></tr>
                             </tbody>
                         </table>
                     </div> 
