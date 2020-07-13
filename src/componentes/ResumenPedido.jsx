@@ -4,6 +4,7 @@ import '../estilos/resumenpedido.css'
 
 
 const ResumenPedido = (props) => {
+
     /*   const [agregar, setAgregar] = React.useState([]);
     const [sumando, setSumando] = React.useState([]); */
     const [nombre, setNombre] = React.useState('');
@@ -11,25 +12,35 @@ const ResumenPedido = (props) => {
     const [,setResult] = React.useState(props.resumen) 
     const [cont, setCont] = React.useState(1)
    /*  const [total, setTotal] = React.useState(0) */
+  
+
     const nombreCliente = (e) => {
         setNombre(e.target.value);
     };
+
     const numeroMesa = (e) => {
         setMesa(e.target.value);
     };
+
     const aumentar = () => {
        setCont(cont + 1)
+      
     }
+
     const disminuir = () => {
         if(cont > 1 ){
           setCont(cont - 1)
           }
     }  
+
+ 
     const deleteItem = (e) => {
         const posicion= e.target.id;
         const array = props.resumen.splice(posicion,1 ) 
         setResult(...array)
      }
+
+       
   /*     const pedido = (nombreProducto, precioProducto) =>{
         //console.log('soy el pedido', pedido)
         console.log(nombreProducto, precioProducto)
@@ -42,6 +53,7 @@ const ResumenPedido = (props) => {
       //acumulacion de pedido
       setAgregar([...agregar]);
       console.log(agregar)
+       
       sumando.push(precioPedido)
       setSumando([...sumando])
       } ;

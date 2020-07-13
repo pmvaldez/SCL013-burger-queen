@@ -4,10 +4,12 @@ import  info from '../data.json'
 import ResumenPedido from './ResumenPedido';
 
 const Menu = () => {
-  
+
   const  data = info.Menu;
   const [type, setType] = useState('breakfast');
   const [resumen, setResumen] = useState([]) 
+
+
   const addProducto = (e =>{
     const valor = e.target.value;
     const precioProducto = parseInt(valor);
@@ -19,7 +21,9 @@ const Menu = () => {
           ...resumen,
       ])
  /*    } */
+
   })
+
     return (
         <div className="container">
           <div className="row">  
@@ -40,9 +44,11 @@ const Menu = () => {
                       </button>
                     </aside>
                   </section>
+              
                   <div className="btn-group-vertical">
                     {data.filter(elemen => elemen.type === type ).map((filteredelemen, i) => (
                         <button onClick={addProducto}  value={filteredelemen.price} name={filteredelemen.name} id={filteredelemen.id} className="btn btn-color w-50 mt-2" key={i}>{filteredelemen.name} ${filteredelemen.price}</button>
+
                     ))}
                     <ResumenPedido  resumen={resumen}/> 
                 </div>
