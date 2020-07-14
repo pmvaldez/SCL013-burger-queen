@@ -3,26 +3,30 @@ import '../estilos/menu.css'
 import  info from '../data.json'
 import ResumenPedido from './ResumenPedido';
 
+
+
 const Menu = () => {
 
   const  data = info.Menu;
   const [type, setType] = useState('breakfast');
   const [resumen, setResumen] = useState([]) 
+  const [,setResult] = React.useState(props.resumen) 
 
 
-  const addProducto = (e =>{
-    const valor = e.target.value;
-    const precioProducto = parseInt(valor);
-    const nombreProducto = e.target.name;
-    const idProducto = e.target.id;
-/*     if(resumen.idProducto === idProducto){ */
-      resumen.push({idProducto, nombreProducto, precioProducto})
+  const addProducto = item => {
+  //const valor = item.price;
+    const precioProducto = parseInt(item.price);
+    const nombreProducto = item.name;
+    const idProducto = item.id;
+    const countProducto = item.count; 
+      /*  if(resumen.idProducto === idProducto){ */
+      resumen.push({idProducto, nombreProducto, precioProducto, countProducto})
       setResumen([
           ...resumen,
-      ])
- /*    } */
-
-  })
+      ]) 
+/*     }  */
+    
+  }
 
     return (
         <div className="container">
@@ -46,11 +50,14 @@ const Menu = () => {
                   </section>
               
                   <div className="btn-group-vertical">
-                    {data.filter(elemen => elemen.type === type ).map((filteredelemen, i) => (
-                        <button onClick={addProducto}  value={filteredelemen.price} name={filteredelemen.name} id={filteredelemen.id} className="btn btn-color w-50 mt-2" key={i}>{filteredelemen.name} ${filteredelemen.price}</button>
-
+                    {console.log(resumen)}
+                    {data.filter(item => item.type === type ).map((item, i) => (
+                        <button onClick={() => addProducto(item)} value={item.price} name={item.name}
+                         id={item.id}
+                         className="btn btn-color w-50 mt-2" key={i}>{item.name} ${item.price} {item.count}</button>
+                        
                     ))}
-                    <ResumenPedido  resumen={resumen}/> 
+                    <ResumenPedido  resumen={resumen}/>
                 </div>
               </div>
             </div> 
@@ -58,19 +65,3 @@ const Menu = () => {
     )
 }
 export default Menu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -11,7 +11,7 @@ const Waiter = () => {
         <div>
             <Navbar />      
                     <Menu />    
-                    <ResumenPedido />    
+                  
                    
         </div>
     )
