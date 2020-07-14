@@ -10,7 +10,7 @@ const Menu = () => {
   const  data = info.Menu;
   const [type, setType] = useState('breakfast');
   const [resumen, setResumen] = useState([]) 
-  const [,setResult] = React.useState(props.resumen) 
+ 
 
 
   const addProducto = item => {
