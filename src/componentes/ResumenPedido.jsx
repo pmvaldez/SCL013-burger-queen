@@ -10,7 +10,8 @@ const ResumenPedido = (props) => {
     const [nombre, setNombre] = React.useState('');
     const [mesa, setMesa] = React.useState('');
     const [,setResult] = React.useState(props.resumen) 
-    const [cont, setCont] = React.useState(1)
+    //const [cont, setCont] = React.useState(1)
+  //  const [cont] = React.useState(1)
    /*  const [total, setTotal] = React.useState(0) */
   
 
@@ -22,17 +23,39 @@ const ResumenPedido = (props) => {
         setMesa(e.target.value);
     };
 
-    const aumentar = () => {
-          setCont(cont + 1)  
+    const aumentar = (count) =>{
+       const contador = count
+       contador.value++
+        
+    }    
+    const disminuir = () => {
+        const textBox = document.getElementById("count");
+        textBox.value--;
     }
+
+/*     const aumentar = () => {
+         const cantidad = cont + 1
+         return cantidad
+    } 
 
     const disminuir = () => {
         if(cont > 1 ){
           setCont(cont - 1)
-          }
-    }  
-
- 
+          } 
+    }  */ 
+/* 
+    const aumentar=  () => {
+        
+    } 
+    
+    const disminuir=  () => {
+         
+    }  */
+  /*   function decrease(){
+      var textBox = document.getElementById("text");
+        textBox.value--;
+    }
+ */
     const deleteItem = (e) => {
         const posicion= e.target.id;
         const array = props.resumen.splice(posicion,1 ) 
@@ -101,19 +124,19 @@ const ResumenPedido = (props) => {
                                 props.resumen.map((item,i) => {
                                     return(
                                     <tr key={i}>
-                                        <th scope="col "><button onClick={aumentar}>+</button></th>
-                                        <th scope="col"><p className="cantidad">{cont}</p></th> 
-                                        <th scope="col "><button onClick={() => disminuir()}>-</button></th>
+                                        <th scope="col "><button onClick={aumentar(item.count)}>+</button></th>
+                                    <th scope="col"><p className="cantidad" id="count" >{item.count}</p></th> 
+                                        <th scope="col "><button onClick={disminuir}>-</button></th>
                                         <th scope="col ">{item.nombreProducto}</th>
                                         <th scope="col">${item.precioProducto}</th>
-                                        <th scope="col mr-8 ">$preciototal</th>
+                                        <th scope="col mr-8 " >$preciototal</th>
                                         <th scope="col"><button className="btn btn-warning" id={i} onClick={deleteItem}> Eliminar</button></th> 
                                     </tr>
                                     
-                                        )
+                                    )
                                     })
                                 }
-                               <tr><th colSpan={7} className="textTotal"><p className="text">Total: R${props.resumen.reduce((acc, item) => acc + item.precioProducto, 0)} </p>
+                               <tr><th colSpan={7} className="textTotal"><p className="text">Total: ${props.resumen.reduce((acc, item) => acc + item.precioProducto , 0)} </p>
                                 </th></tr>
                             </tbody>
                             

@@ -17,13 +17,11 @@ const Menu = () => {
     const precioProducto = parseInt(valor);
     const nombreProducto = e.target.name;
     const idProducto = e.target.id;
-/*     if(resumen.idProducto === idProducto){ */
-      resumen.push({idProducto, nombreProducto, precioProducto})
+    const count = 1
+    resumen.push({idProducto, nombreProducto, precioProducto, count})
       setResumen([
           ...resumen,
-      ])
- /*    } */
-
+    ])
   })
 
     return (
