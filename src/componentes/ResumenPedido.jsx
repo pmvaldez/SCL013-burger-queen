@@ -10,7 +10,7 @@ const ResumenPedido = (props) => {
     const [nombre, setNombre] = React.useState('');
     const [mesa, setMesa] = React.useState('');
     const [,setResult] = React.useState(props.resumen) 
-    const [cont, setCont] = React.useState(1)
+    const [count, setCount] = React.useState(0) 
    /*  const [total, setTotal] = React.useState(0) */
   
 
@@ -22,17 +22,21 @@ const ResumenPedido = (props) => {
         setMesa(e.target.value);
     };
 
-    const aumentar = () => {
-       setCont(cont + 1)
-      
-    }
+        const aumentar = (item) => {
+        const array = props.resumen
+        console.log(array)
+        const itemSelected = array.find(element => element.idProducto === item.idProducto);
+        itemSelected.countProducto = itemSelected.countProducto + 1;
+        setResult(...array)
+       /*  e.target.id */
 
-    const disminuir = () => {
-        if(cont > 1 ){
-          setCont(cont - 1)
-          }
-    }  
-
+    } 
+ 
+        const disminuir = () => {
+        if(count > 1 ){
+          setCount(count - 1)
+        }
+    }     
  
     const deleteItem = (e) => {
         const posicion= e.target.id;
@@ -107,11 +111,12 @@ const ResumenPedido = (props) => {
                             <tbody>
                                 {
                                 props.resumen.map((item,i) => {
+                                  //console.log(item.countProducto)
                                     return(
-                                    <tr key={i}>
-                                        <th scope="col "><button onClick={() => aumentar(i)}>+</button></th>
-                                        <th scope="col"><p className="cantidad">{cont}</p></th> 
-                                        <th scope="col "><button onClick={() => disminuir()}>-</button></th>
+                                    <tr key={i} id={item.idProducto}>
+                                        <th scope="col "><button onClick={(e) => aumentar(item)}>+</button></th>
+                                        <th scope="col"><p className="cantidad">{item.countProducto}</p></th> 
+                                        <th scope="col "><button onClick={(e) => disminuir(item)} >-</button></th>
                                         <th scope="col ">{item.nombreProducto}</th>
                                         <th scope="col">${item.precioProducto}</th>
                                         <th scope="col mr-8 ">$preciototal</th>
