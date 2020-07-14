@@ -9,8 +9,7 @@ const Waiter = () => {
     return (
         <div>
             <Navbar />      
-                    <Menu />      
-                   
+            <Menu />      
         </div>
     )
 }

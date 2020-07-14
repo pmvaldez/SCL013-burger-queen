@@ -3,11 +3,13 @@
     "id": "b01",
     "name": "Café Americano",
     "price": 500,
+    "count": 1,
     "type": "breakfast"
   },{
     "id": "b02",
     "name": "Café con leche",
     "price": 700,
+    "count": 1,
     "type": "breakfast"
   },{
     "id": "b03",

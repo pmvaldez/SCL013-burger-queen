@@ -10,9 +10,7 @@ const ResumenPedido = (props) => {
     const [nombre, setNombre] = React.useState('');
     const [mesa, setMesa] = React.useState('');
     const [,setResult] = React.useState(props.resumen) 
-    //const [cont, setCont] = React.useState(1)
-  //  const [cont] = React.useState(1)
-   /*  const [total, setTotal] = React.useState(0) */
+     /*  const [total, setTotal] = React.useState(0) */
   
 
     const nombreCliente = (e) => {
@@ -23,45 +21,36 @@ const ResumenPedido = (props) => {
         setMesa(e.target.value);
     };
 
-    const aumentar = (count) =>{
-       const contador = count
-       contador.value++
-        
-    }    
-    const disminuir = () => {
-        const textBox = document.getElementById("count");
-        textBox.value--;
-    }
-
-/*     const aumentar = () => {
-         const cantidad = cont + 1
-         return cantidad
-    } 
-
-    const disminuir = () => {
-        if(cont > 1 ){
-          setCont(cont - 1)
-          } 
-    }  */ 
-/* 
-    const aumentar=  () => {
-        
+        const aumentar = (item) => {
+        const array = props.resumen
+        const itemSelected = array.find(element => element.idProducto === item.idProducto);
+        itemSelected.countProducto = itemSelected.countProducto + 1;
+       /*  setResult(...array) */
+       setResult({ ...array, countProducto : itemSelected.countProducto})
     } 
     
-    const disminuir=  () => {
-         
-    }  */
-  /*   function decrease(){
-      var textBox = document.getElementById("text");
-        textBox.value--;
-    }
- */
+      const disminuir = (item) => {
+        const array = props.resumen
+        const itemSelected = array.find(element => element.idProducto === item.idProducto);
+        if(itemSelected.countProducto > 1){
+          itemSelected.countProducto = itemSelected.countProducto - 1;
+        }
+        setResult({ ...array, countProducto : itemSelected.countProducto})
+    }     
+ 
     const deleteItem = (e) => {
         const posicion= e.target.id;
         const array = props.resumen.splice(posicion,1 ) 
         setResult(...array)
-     }
-
+    }
+    
+/*     const totalOrden = () => {
+       let totalprecio = 0;
+          if (props.resumen.length !== 0) {
+          totalprecio = props.resumen.reduce((a, b) => a + b, 0)
+        }
+        return totalprecio
+    } 
        
   /*     const pedido = (nombreProducto, precioProducto) =>{
         //console.log('soy el pedido', pedido)
@@ -122,21 +111,22 @@ const ResumenPedido = (props) => {
                             <tbody>
                                 {
                                 props.resumen.map((item,i) => {
+                                  //console.log(item.countProducto)
                                     return(
-                                    <tr key={i}>
-                                        <th scope="col "><button onClick={aumentar(item.count)}>+</button></th>
-                                    <th scope="col"><p className="cantidad" id="count" >{item.count}</p></th> 
-                                        <th scope="col "><button onClick={disminuir}>-</button></th>
+                                    <tr key={i} id={item.idProducto}>
+                                        <th scope="col "><button onClick={(e) => aumentar(item)}>+</button></th>
+                                        <th scope="col"><p className="cantidad">{item.countProducto}</p></th> 
+                                        <th scope="col "><button onClick={(e) => disminuir(item)}>-</button></th>
                                         <th scope="col ">{item.nombreProducto}</th>
                                         <th scope="col">${item.precioProducto}</th>
-                                        <th scope="col mr-8 " >$preciototal</th>
+                                        <th scope="col mr-8 " >${item.precioProducto * item.countProducto}</th>
                                         <th scope="col"><button className="btn btn-warning" id={i} onClick={deleteItem}> Eliminar</button></th> 
                                     </tr>
                                     
                                     )
                                     })
                                 }
-                               <tr><th colSpan={7} className="textTotal"><p className="text">Total: ${props.resumen.reduce((acc, item) => acc + item.precioProducto , 0)} </p>
+                                <tr><th colSpan={7} className="textTotal"><p className="text">Total: ${props.resumen.reduce((acc, item) => acc + item.precioProducto * item.countProducto, 0)} </p>
                                 </th></tr>
                             </tbody>
                             
