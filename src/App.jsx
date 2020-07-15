@@ -5,6 +5,7 @@ import { auth } from './firebase'
 import Login from './componentes/Login'
 import Waiter from './componentes/Waiter'
 import Chef from './componentes/Chef'
+import Orders from './componentes/Orders'
 const App = (props) => {
   const [firebaseUser, setFirebaseUser] = React.useState(false)
  React.useEffect(() => {
@@ -35,6 +36,8 @@ const App = (props) => {
       <Route exact path="/" component={ Login } />
       <Route path="/waiter" component={ Waiter } />
       <Route path="/chef" component={ Chef } />
+      <Route path="/Orders" component={ Orders } />
+
     </Fragment>
   </Router>
     ) : (
