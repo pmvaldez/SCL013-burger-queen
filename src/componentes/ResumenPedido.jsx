@@ -47,36 +47,9 @@ const ResumenPedido = (props) => {
         setResult(...array)
     }
     
-/*     const totalOrden = () => {
-       let totalprecio = 0;
-          if (props.resumen.length !== 0) {
-          totalprecio = props.resumen.reduce((a, b) => a + b, 0)
-        }
-        return totalprecio
-    } 
-       
-  /*     const pedido = (nombreProducto, precioProducto) =>{
-        //console.log('soy el pedido', pedido)
-        console.log(nombreProducto, precioProducto)
-        
-      }
-      pedido() */
-   /*    const pedido= (e) => {
-          const valor = e.target.value;
-          const precioPedido = parseInt(valor);
-          const nombrePedido = e.target.name;
-      //acumulacion de pedido
-      setAgregar([...agregar]);
-      console.log(agregar)
-       
-      sumando.push(precioPedido)
-      setSumando([...sumando])
-      } ;
-  
-     const suma = sumando.reduce((a, b) => a + b, 0); */
-
-  //Enviar pedido a firebase
-    /*  const agregarPedido= async (e) => {
+    
+ /*  //Enviar pedido a firebase
+    const agregarPedido= async (e) => {
       e.preventDefault()
       try {
           const nuevoPedido = {
