@@ -2,13 +2,14 @@ import React from 'react'
 import  data from '../data.json'
 
 const Producto = ({ documento, buscarProducto }) => {
-    const { producto, precio }  = data;
+    const {  name, price }  = data.Menu
+    //const  data = info.Menu;
     //const { producto, precio, url } = documento.data();
     return (
        <section className="card style prod" >
-          <div key={documento.id} onClick={() => { buscarProducto(documento.data(), documento.id) }}>
-             <h5 >{producto}</h5>
-             <p>S/.{precio}</p>
+          <div key={documento.id}>
+             <h5 >{name}</h5>
+             <p>S/.{price}</p>
           </div>
        </section>
     )
