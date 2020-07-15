@@ -24,18 +24,45 @@
     "count": 1,
     "type": "breakfast"
   },{
-    "id": "l01",
-    "name": "Hamburguesa simple",
+    "id": "l20",
+    "name": "Hamburguesa simple vegetariana",
     "price": 1000,
     "count": 1,
     "type": "lunch"
   },{
-    "id": "l02",
-    "name": "Hamburguesa doble",
+    "id": "l21",
+    "name": "Hamburguesa doble vegetariana",
     "price": 1500,
     "count": 1,
     "type": "lunch"
   },{
+  },{
+    "id": "l22",
+    "name": "Hamburguesa simple pollo",
+    "price": 1000,
+    "count": 1,
+    "type": "lunch"
+  },{    
+    "id": "l23",
+    "name": "Hamburguesa doble pollo",
+    "price": 1500,
+    "count": 1,
+    "type": "lunch" 
+  },{
+  },{
+    "id": "l24",
+    "name": "Hamburguesa simple chuleta",
+    "price": 1000,
+    "count": 1,
+    "type": "lunch"
+  },{    
+  },{
+    "id": "l25",
+    "name": "Hamburguesa doble chuleta",
+    "price": 1500,
+    "count": 1,
+    "type": "lunch"
+  },{   
     "id": "l03",
     "name": "Papas fritas",
     "price": 500,
