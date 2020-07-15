@@ -1,8 +1,11 @@
-.cantidad{
-    background-color: white;
-    width: 50px;
-}
-
 .textTotal{
     margin-bottom: 0;
+}
+
+.btnDelete{
+    width: 38px;
+}
+
+label{
+    margin-left: 22px;
 }

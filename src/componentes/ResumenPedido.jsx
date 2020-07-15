@@ -1,5 +1,8 @@
 import React from 'react'
 import '../estilos/resumenpedido.css'
+import mas from '../imagen/aumentar.png'
+import menos from '../imagen/disminuir.png'
+import remove from '../imagen/remove.png'
 /* import {db} from '../firebase' */
 
 const ResumenPedido = (props) => {
@@ -88,10 +91,7 @@ const ResumenPedido = (props) => {
   }  */
 
     return (
-
-        <div className="col-auto ctnproductos">      
-            <section className="listaprecios">
-                <aside>
+            <section className="listaprecios col-lg-6  ">
                 <label> Nombre <input type="text" onChange={nombreCliente} placeholder='Ignacio' value={nombre} /> </label>
                 <label> N° de Mesa <input className="inputMesa" type="text" onChange={numeroMesa} placeholder='1' value={mesa} /> </label>
                     <div className= "container"> 
@@ -102,7 +102,7 @@ const ResumenPedido = (props) => {
                                 <th scope="col"></th>
                                 <th scope="col">Cant.</th>
                                 <th scope="col"></th>
-                                <th scope="col ">Nombre del Producto</th>
+                                <th scope="col ">Producto</th>
                                 <th scope="col">P/U</th>
                                 <th scope="col mr-8 ">Sub/Total</th>
                                 <th scope="col"> Eliminar</th>
@@ -111,30 +111,27 @@ const ResumenPedido = (props) => {
                             <tbody>
                                 {
                                 props.resumen.map((item,i) => {
-                                  //console.log(item.countProducto)
                                     return(
                                     <tr key={i} id={item.idProducto}>
-                                        <th scope="col "><button onClick={(e) => aumentar(item)}>+</button></th>
+                                        <th scope="col "><img src={mas} onClick={(e) => aumentar(item)} alt="" /></th>
                                         <th scope="col"><p className="cantidad">{item.countProducto}</p></th> 
-                                        <th scope="col "><button onClick={(e) => disminuir(item)}>-</button></th>
+                                        <th scope="col "><img src={menos} onClick={(e) => disminuir(item)} alt=""/></th>
                                         <th scope="col ">{item.nombreProducto}</th>
                                         <th scope="col">${item.precioProducto}</th>
                                         <th scope="col mr-8 " >${item.precioProducto * item.countProducto}</th>
-                                        <th scope="col"><button className="btn btn-warning" id={i} onClick={deleteItem}> Eliminar</button></th> 
+                                        <th scope="col"><img src={remove} className="btnDelete" id={i} onClick={deleteItem} alt=""/></th> 
                                     </tr>
-                                    
+
                                     )
-                                    })
+                                })
                                 }
                                 <tr><th colSpan={7} className="textTotal"><p className="text">Total: ${props.resumen.reduce((acc, item) => acc + item.precioProducto * item.countProducto, 0)} </p>
                                 </th></tr>
-                            </tbody>
-                            
+                            </tbody>   
                         </table>
+                        <button className="btn btn-warning" >Enviar</button>
                     </div> 
-                </aside>
             </section>
-        </div> 
     )
 }
 
