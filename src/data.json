@@ -3,71 +3,85 @@
     "id": "b01",
     "name": "Café Americano",
     "price": 500,
+    "count": 1,
     "type": "breakfast"
   },{
     "id": "b02",
     "name": "Café con leche",
     "price": 700,
+    "count": 1,
     "type": "breakfast"
   },{
     "id": "b03",
     "name": "Sandwich jamón-queso",
     "price": 1000,
+    "count": 1,
     "type": "breakfast"
   },{
     "id": "b04",
     "name": "Jugo de frutas natural",
     "price": 700,
+    "count": 1,
     "type": "breakfast"
   },{
     "id": "l01",
     "name": "Hamburguesa simple",
     "price": 1000,
+    "count": 1,
     "type": "lunch"
   },{
     "id": "l02",
     "name": "Hamburguesa doble",
     "price": 1500,
+    "count": 1,
     "type": "lunch"
   },{
     "id": "l03",
     "name": "Papas fritas",
     "price": 500,
+    "count": 1,
     "type": "lunch"
   },{
     "id": "l04",
     "name": "Aros de cebolla",
     "price": 500,
+    "count": 1,
     "type": "lunch"
   }, {
     "id": "l05",
     "name": "Agua 500ml",
     "price": 500,
+    "count": 1,
     "type": "drinks"
   },{
     "id": "l06",
     "name": "Agua 750ml",
     "price": 700,
+    "count": 1,
     "type": "drinks"
   },{
     "id": "l07",
     "name": "Bebida/gaseosa 500ml",
     "price": 700,
+    "count": 1,
     "type": "drinks"
   },{
     "id": "l08",
     "name": "Bebida/gaseosa 750ml",
     "price": 1000,
+    "count": 1,
     "type": "drinks"
   }, {
     "id": "e00",
     "name": "Huevo",
     "price": 100,
+    "count": 1,
     "type": "additional"
   },{
     "id": "e01",
     "name": "Queso",
     "price": 100,
+    "count": 1,
     "type": "additional"
   }
 ]

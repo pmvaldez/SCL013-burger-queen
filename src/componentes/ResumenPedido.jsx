@@ -1,34 +1,59 @@
 import React from 'react'
+import '../estilos/resumenpedido.css'
+import mas from '../imagen/aumentar.png'
+import menos from '../imagen/disminuir.png'
+import remove from '../imagen/remove.png'
 /* import {db} from '../firebase' */
 
 const ResumenPedido = (props) => {
 
-    //console.log(props.resumen)  
     /*   const [agregar, setAgregar] = React.useState([]);
     const [sumando, setSumando] = React.useState([]); */
     const [nombre, setNombre] = React.useState('');
     const [mesa, setMesa] = React.useState('');
- 
+    const [,setResult] = React.useState(props.resumen) 
+     /*  const [total, setTotal] = React.useState(0) */
+  
+
     const nombreCliente = (e) => {
         setNombre(e.target.value);
-      };
-      const numeroMesa = (e) => {
-        setMesa(e.target.value);
-      };
+    };
 
-/*       const removeItemFromArr = (id) => {
-        const index = resumen.findIndex((i) => i.id === id.id)
-        resumen.splice(index, 1);
-        setResumen([...resumen])
-      } */
+    const numeroMesa = (e) => {
+        setMesa(e.target.value);
+    };
+
+        const aumentar = (item) => {
+        const array = props.resumen
+        const itemSelected = array.find(element => element.idProducto === item.idProducto);
+        itemSelected.countProducto = itemSelected.countProducto + 1;
+       /*  setResult(...array) */
+       setResult({ ...array, countProducto : itemSelected.countProducto})
+    } 
     
-/*     function removeItemFromArr ( resumen, item ) {
-        let i = resumen.indexOf( item );
-        resumen.splice( i, 1 );
-    } */
+      const disminuir = (item) => {
+        const array = props.resumen
+        const itemSelected = array.find(element => element.idProducto === item.idProducto);
+        if(itemSelected.countProducto > 1){
+          itemSelected.countProducto = itemSelected.countProducto - 1;
+        }
+        setResult({ ...array, countProducto : itemSelected.countProducto})
+    }     
+ 
+    const deleteItem = (e) => {
+        const posicion= e.target.id;
+        const array = props.resumen.splice(posicion,1 ) 
+        setResult(...array)
+    }
     
-   
-      
+/*     const totalOrden = () => {
+       let totalprecio = 0;
+          if (props.resumen.length !== 0) {
+          totalprecio = props.resumen.reduce((a, b) => a + b, 0)
+        }
+        return totalprecio
+    } 
+       
   /*     const pedido = (nombreProducto, precioProducto) =>{
         //console.log('soy el pedido', pedido)
         console.log(nombreProducto, precioProducto)
@@ -39,20 +64,17 @@ const ResumenPedido = (props) => {
           const valor = e.target.value;
           const precioPedido = parseInt(valor);
           const nombrePedido = e.target.name;
-          
       //acumulacion de pedido
-      
       setAgregar([...agregar]);
       console.log(agregar)
-     
-  
-  
+       
       sumando.push(precioPedido)
       setSumando([...sumando])
       } ;
   
      const suma = sumando.reduce((a, b) => a + b, 0); */
-  
+
+  //Enviar pedido a firebase
     /*  const agregarPedido= async (e) => {
       e.preventDefault()
       try {
@@ -68,10 +90,7 @@ const ResumenPedido = (props) => {
   }  */
 
     return (
-
-        <div className="col-auto ctnproductos">      
-            <section className="listaprecios">
-                <aside>
+            <section className="listaprecios col-lg-6  ">
                 <label> Nombre <input type="text" onChange={nombreCliente} placeholder='Ignacio' value={nombre} /> </label>
                 <label> N° de Mesa <input className="inputMesa" type="text" onChange={numeroMesa} placeholder='1' value={mesa} /> </label>
                     <div className= "container"> 
@@ -79,38 +98,39 @@ const ResumenPedido = (props) => {
                         <table className="table table-sm ">
                             <thead>
                                 <tr>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col ">Nombre del Producto</th>
-                                <th scope="col">Precio Unitario</th>
-                                <th scope="col mr-8 ">Precio Total</th>
+                                <th scope="col"></th>
+                                <th scope="col">Cant.</th>
+                                <th scope="col"></th>
+                                <th scope="col ">Producto</th>
+                                <th scope="col">P/U</th>
+                                <th scope="col mr-8 ">Sub/Total</th>
                                 <th scope="col"> Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                props.resumen.map(item => {
-                                    return([
-                                    <tr key={item.idProducto}>
-                                        <th scope="col"><button>+</button><input className="w-25" placeholder="1"/><button>-</button></th> 
+                                props.resumen.map((item,i) => {
+                                    return(
+                                    <tr key={i} id={item.idProducto}>
+                                        <th scope="col "><img src={mas} onClick={(e) => aumentar(item)} alt="" /></th>
+                                        <th scope="col"><p className="cantidad">{item.countProducto}</p></th> 
+                                        <th scope="col "><img src={menos} onClick={(e) => disminuir(item)} alt=""/></th>
                                         <th scope="col ">{item.nombreProducto}</th>
                                         <th scope="col">${item.precioProducto}</th>
-                                        <th scope="col mr-8 ">$preciototal</th>
-
+                                        <th scope="col mr-8 " >${item.precioProducto * item.countProducto}</th>
+                                        <th scope="col"><img src={remove} className="btnDelete" id={i} onClick={deleteItem} alt=""/></th> 
                                     </tr>
-                                        ])
-                                    })
+
+                                    )
+                                })
                                 }
-
-                            </tbody>
+                                <tr><th colSpan={7} className="textTotal"><p className="text">Total: ${props.resumen.reduce((acc, item) => acc + item.precioProducto * item.countProducto, 0)} </p>
+                                </th></tr>
+                            </tbody>   
                         </table>
+                        <button className="btn btn-warning" >Enviar</button>
                     </div> 
-                </aside>
             </section>
-        </div> 
-
-    
-
-
     )
 }
 

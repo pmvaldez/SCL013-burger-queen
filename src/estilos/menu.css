@@ -22,7 +22,7 @@
 .listaprecios{
     background-color: #887E36;
     border-radius: 7px;
-    padding: 27px;
+    padding: 18px;
     height: 500px;
 }
 
@@ -36,4 +36,8 @@ h1{
 
 .w-25 {
   width: 13%!important;
+}
+
+.ctnMenuResumen{
+  width: 100%;
 }
