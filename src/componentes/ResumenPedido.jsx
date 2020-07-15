@@ -3,18 +3,35 @@ import '../estilos/resumenpedido.css'
 import mas from '../imagen/aumentar.png'
 import menos from '../imagen/disminuir.png'
 import remove from '../imagen/remove.png'
-/* import {db} from '../firebase' */
+import {db} from '../firebase'
 
 const ResumenPedido = (props) => {
 
-
-    /*   const [agregar, setAgregar] = React.useState([]);
-    const [sumando, setSumando] = React.useState([]); */
     const [nombre, setNombre] = React.useState('');
     const [mesa, setMesa] = React.useState('');
-    const [,setResult] = React.useState(props.resumen) 
-     /*  const [total, setTotal] = React.useState(0) */
-  
+    const [,setResult] = React.useState(props.resumen);
+    const [error, setError] = React.useState(null)
+    
+    const procesarDatos = e => {
+        e.preventDefault()
+        if(!nombre.trim()){
+            console.log('Datos vacíos Ingrese Nombre Cliente!')
+            setError('Datos vacíos Ingrese Nombre Cliente!')
+            return
+        }
+        if(!mesa.trim()){
+            console.log('Ingrese Nombre de Mesa!')
+            setError('Ingrese Nombre de Mesa!')
+            return
+        }
+        if(!props.resumen.length){
+            console.log('Pedido vacio')
+            setError('Pedido vacio')
+            return
+        }
+        console.log('correcto...')
+        setError(null)
+    }
 
     const nombreCliente = (e) => {
         setNombre(e.target.value);
@@ -24,71 +41,50 @@ const ResumenPedido = (props) => {
         setMesa(e.target.value);
     };
 
-        const aumentar = (item) => {
-        const array = props.resumen
-        const itemSelected = array.find(element => element.idProducto === item.idProducto);
-        itemSelected.countProducto = itemSelected.countProducto + 1;
-       /*  setResult(...array) */
+    const aumentar = (item) => {
+       const array = props.resumen
+       const itemSelected = array.find(element => element.idProducto === item.idProducto);
+       itemSelected.countProducto = itemSelected.countProducto + 1;
        setResult({ ...array, countProducto : itemSelected.countProducto})
     } 
     
-      const disminuir = (item) => {
-        const array = props.resumen
-        const itemSelected = array.find(element => element.idProducto === item.idProducto);
-        if(itemSelected.countProducto > 1){
-          itemSelected.countProducto = itemSelected.countProducto - 1;
-        }
-        setResult({ ...array, countProducto : itemSelected.countProducto})
+    const disminuir = (item) => {
+       const array = props.resumen
+       const itemSelected = array.find(element => element.idProducto === item.idProducto);
+       if(itemSelected.countProducto > 1){
+         itemSelected.countProducto = itemSelected.countProducto - 1;
+       }
+       setResult({ ...array, countProducto : itemSelected.countProducto})
     }     
  
     const deleteItem = (e) => {
         const posicion= e.target.id;
         const array = props.resumen.splice(posicion,1 ) 
         setResult(...array)
-    }
-    
-/*     const totalOrden = () => {
-       let totalprecio = 0;
-          if (props.resumen.length !== 0) {
-          totalprecio = props.resumen.reduce((a, b) => a + b, 0)
-        }
-        return totalprecio
-    } 
-       
-  /*     const pedido = (nombreProducto, precioProducto) =>{
-        //console.log('soy el pedido', pedido)
-        console.log(nombreProducto, precioProducto)
-        
-      }
-      pedido() */
-   /*    const pedido= (e) => {
-          const valor = e.target.value;
-          const precioPedido = parseInt(valor);
-          const nombrePedido = e.target.name;
-      //acumulacion de pedido
-      setAgregar([...agregar]);
-      console.log(agregar)
-       
-      sumando.push(precioPedido)
-      setSumando([...sumando])
-      } ;
-  
-     const suma = sumando.reduce((a, b) => a + b, 0); */
+    }       
 
   //Enviar pedido a firebase
-    /*  const agregarPedido= async (e) => {
+    const agregarPedido= async (e) => {
       e.preventDefault()
       try {
-          const nuevoPedido = {
-             pedido: agregar
-  
-          }
-          const data = await db.collection("pedidos").add(nuevoPedido);
+        const nuevoPedido = {
+          pedido: props.resumen,
+          cliente: nombre,
+          numMesa: mesa,
+          status: 'pending',
+          hora: new Date()
+        }
+        setNombre('')
+        setMesa('')
+        setResult('')
+        setError(null)
+        
+        const data = await db.collection("pedidos").add(nuevoPedido);
+         
       } catch (error) {
           console.log(error)
-      }
-      
-  }  */
+        }
+    } 
 
     return (
             <section className="listaprecios col-lg-6  ">
@@ -129,7 +125,7 @@ const ResumenPedido = (props) => {
                                 </th></tr>
                             </tbody>   
                         </table>
-                        <button className="btn btn-warning" >Enviar</button>
+                        <button className="btn btn-warning" type="submit" onSubmit={procesarDatos} onClick={agregarPedido} >Enviar</button>
                     </div> 
             </section>
     )
