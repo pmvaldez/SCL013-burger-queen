@@ -1,12 +1,13 @@
 import React from 'react'
 import Navbar from './Navbar'
+import PedidosChef from './PedidosChef'
 
 
 const Chef = () =>{
     return(
         <div>
             <Navbar />
-            <h1>SOY EL CHEF</h1>
+            <PedidosChef />
         </div>
     )
 }

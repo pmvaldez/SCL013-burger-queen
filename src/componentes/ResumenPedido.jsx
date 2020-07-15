@@ -3,7 +3,7 @@ import '../estilos/resumenpedido.css'
 import mas from '../imagen/aumentar.png'
 import menos from '../imagen/disminuir.png'
 import remove from '../imagen/remove.png'
-import {db} from '../firebase'
+import {db, auth } from '../firebase'
 
 const ResumenPedido = (props) => {
 
@@ -72,7 +72,8 @@ const ResumenPedido = (props) => {
           cliente: nombre,
           numMesa: mesa,
           status: 'pending',
-          hora: new Date()
+          hora: new Date(),
+          uid: auth.currentUser.uid
         }
         setNombre('')
         setMesa('')
@@ -81,9 +82,10 @@ const ResumenPedido = (props) => {
         
         const data = await db.collection("pedidos").add(nuevoPedido);
          
-      } catch (error) {
-          console.log(error)
-        }
+      } 
+      catch (error) {
+        console.log(error)
+      }
     } 
 
     return (
