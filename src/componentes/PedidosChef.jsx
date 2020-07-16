@@ -1,5 +1,6 @@
 import React from 'react'
 import { db } from '../firebase'
+import '../estilos/pedidoschef.css'
 
 const PedidosChef = () => {
 
@@ -48,7 +49,7 @@ const PedidosChef = () => {
                 <div className="order-done">
                     {orders.map((order) => { 
                     return (
-                        <section className="section" key={order.id}  >
+                        <section className="section col-sm-6 mt-4" key={order.id}  >
                             <div className="order-div">
                                 <div className="menu-name">
                                     <p className="text client-text"> Cliente: {order.cliente}</p>

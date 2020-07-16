@@ -51,7 +51,7 @@ const Menu = () => {
                     {data.filter(item => item.type === type ).map((item, i) => (
                         <button onClick={() => addProducto(item)} value={item.price} name={item.name}
                          id={item.id}
-                         className="btn-lg btn-color w-50 mt-2" key={i}>{item.name} ${item.price}</button>
+                         className="btn-sm btn-color w-50 mt-2" key={i}>{item.name} ${item.price}</button>
                         
                     ))}
                    
