@@ -4,6 +4,14 @@ import mas from '../imagen/aumentar.png'
 import menos from '../imagen/disminuir.png'
 import remove from '../imagen/remove.png'
 import {db, auth } from '../firebase'
+import growl from 'growl-alert';
+import 'growl-alert/dist/growl-alert.css';
+
+const effect =
+{
+  fadeAway: true,
+  fadeAwayTimeOut: 1000,
+}
 
 const ResumenPedido = (props) => {
 
@@ -75,6 +83,7 @@ const ResumenPedido = (props) => {
           hourSend: new Date().getTime(),
           uid: auth.currentUser.uid
         }
+        growl.success({ text: 'Pedido Enviado', ...effect })
         setNombre('')
         setMesa('')
         setResult('')

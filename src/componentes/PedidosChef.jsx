@@ -1,6 +1,8 @@
 import React from 'react'
 import { db } from '../firebase'
 import '../estilos/pedidoschef.css'
+/* import growl from 'growl-alert';
+import 'growl-alert/dist/growl-alert.css'; */
 const hmh = require('hmh');
 
 const PedidosChef = () => {
