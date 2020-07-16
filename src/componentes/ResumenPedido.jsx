@@ -72,7 +72,7 @@ const ResumenPedido = (props) => {
           cliente: nombre,
           numMesa: mesa,
           status: 'pending',
-          hora: new Date(),
+          hourSend: new Date().getTime(),
           uid: auth.currentUser.uid
         }
         setNombre('')
