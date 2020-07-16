@@ -1,8 +1,7 @@
 import React from 'react'
 import { db } from '../firebase'
 import '../estilos/pedidoschef.css'
-
-//const hmh = require('hmh')
+const hmh = require('hmh');
 
 const PedidosChef = () => {
 
@@ -76,27 +75,31 @@ const PedidosChef = () => {
         </section>
 
         <section className="root-kitchen">
-            <h2 className="h2">Pedidos entregados</h2>
-            <div className="app-kitchen app">
-                {delivery.map((item, index) => {
-                return (
-                    <div className="order-done" key={index} >
-                        {item.status === 'delivered' ?
-                        <section className="section">
-                            <div className="order-div">
-                                <div className="menu-name">
-                                    <p className="text client-text"> Cliente: {item.cliente}</p>
-                                    <p className="text client-text"> Mesa: {item.numMesa}</p>
-                                </div>
-                                <div className="order-itens">
-                                    <span className="menu-name text">Pedidos:</span>
-                                    {item.pedido.map((item, index) =>
-                                    <span className="order-kitchen" key={index}> {item.name} </span>)}
-                                    <span className="time">Tiempo de preparación:</span>
-                                </div>
-                            </div>
-                        </section>
-                          : null}
+          <h2 className="h2">Pedidos entregues</h2>
+          <div className="app-kitchen app">
+            {delivery.map((item, index) => {
+              const send = `${new Date(item.hourSend).getHours()}h ${new Date(item.hourSend).getMinutes()}m`;
+              const hDelivered = `${new Date(item.hourDelivered).getHours()}h ${new Date(item.hourDelivered).getMinutes()}m`;
+              const difftime = (hmh.diff(`${send}`, `${hDelivered}`).toString());
+              return (
+                <div className="order-done" key={index} >
+                  {item.status === 'delivered' ?
+                    <section className="section">
+                      <div className="order-div">
+                        <div className="menu-name">
+                          <p className="text client-text"> Cliente: {item.cliente}</p>
+                          <p className="text client-text"> Mesa: {item.numMesa}</p>
+                        </div>
+                        <div className="order-itens">
+                          <span className="menu-name text">Pedidos:</span>
+                          {item.pedido.map((item, index) =>
+                            <span className="order-kitchen" key={index}> {item.nombreProducto}  {item.countProducto}</span>)}
+                          <span className="time">Tempo de preparo:{difftime}</span>
+                        </div>
+                      </div>
+                    </section>
+
+                    : null}
 
                     </div>                  
 
