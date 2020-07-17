@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { db } from '../firebase'
 import '../estilos/pedidoschef.css'
 /* import growl from 'growl-alert';
@@ -45,76 +45,71 @@ const PedidosChef = () => {
     }
     
     return (
-      <section className="root-kitchen">
-        <section className="root-kitchen">
-            <h1 className="h2">Cocina</h1>
-            <h2 className="h2">Pedidos a realizar</h2>
-            <div className="app-kitchen app">
-                <div className="order-done">
-                    {orders.map((order) => { 
-                    return (
-                        <section className="section col-sm-6 mt-4" key={order.id}  >
-                            <div className="order-div">
-                                <div className="menu-name">
-                                    <p className="text client-text"> Cliente: {order.cliente}</p>
-                                    <p className="text client-text"> Mesas: {order.numMesa}</p>
+        <Fragment>
+        <div className="container">
+            <h2>Pedidos a realizar</h2>
+            <div className="row row-cols-3 ">
+                {orders.map((order) => { 
+                return (
+                    <div className="">
+                        <section className="section" key={order.id}  >
+                            <div className="row columnLength">
+                                <p className="text client-text"> Cliente: {order.cliente}</p>
+                                <p className="text client-text"> Mesas: {order.numMesa}</p>
+                                <span className="menu-name text">Pedidos:</span>
+                                {order.pedido.map(item => <span className="order-kitchen" key={item.id}>
+                                    <ul>
+                                        <li> {item.countProducto} {item.nombreProducto} </li>    
+                                    </ul> 
+                                </span>)}
+                                <div>
+                                    <button class="btn-enviar burger-queen">Cancelar</button>
+                                    <button class="btn-enviar burger-queen" onClick={() => orderDone(order)}>Listo</button>
                                 </div>
-                                <div className="order-itens">
-                                    <span className="menu-name text">Pedidos:</span>
-                                    {order.pedido.map(item => <span className="order-kitchen" key={item.id}>
-                                        <ul>
-                                            <li> {item.countProducto} {item.nombreProducto} </li>    
-                                        </ul> 
-                                    </span>)}
-                                </div>
-                                <button class="btn-enviar burger-queen" onClick={() => orderDone(order)}>Pronto</button>
                             </div>
                         </section>
-                    )
-                    })}
-                </div>
+                    </div>
+                )
+                })}
             </div>
-        </section>
-
-        <section className="root-kitchen">
+        </div>
+       
+        <div className="container">
           <h2 className="h2">Pedidos entregues</h2>
-          <div className="app-kitchen app">
-            {delivery.map((item, index) => {
+          <div className="col-sm-6">
+              {delivery.map((item, index) => {
               const send = `${new Date(item.hourSend).getHours()}h ${new Date(item.hourSend).getMinutes()}m`;
               const hDelivered = `${new Date(item.hourDelivered).getHours()}h ${new Date(item.hourDelivered).getMinutes()}m`;
               const difftime = (hmh.diff(`${send}`, `${hDelivered}`).toString());
               return (
                 <div className="order-done" key={index} >
-                  {item.status === 'delivered' ?
+                    {item.status === 'delivered' ?
                     <section className="section">
-                      <div className="order-div">
-                        <div className="menu-name">
-                          <p className="text client-text"> Cliente: {item.cliente}</p>
-                          <p className="text client-text"> Mesa: {item.numMesa}</p>
+                        <div className="order-div">
+                            <div className="menu-name">
+                                <p className="card-title"> Cliente: {item.cliente}</p>
+                                <p className="card-title"> Mesa: {item.numMesa}</p>
+                            </div>
+                            <div className="order-itens">
+                                <span className="menu-name text">Pedidos:</span>
+                                {item.pedido.map((item, index) =>
+                                <span className="order-kitchen" key={index}> {item.nombreProducto}  {item.countProducto}</span>)}
+                                <span className="time">Tempo de preparo:{difftime}</span>
+                            </div>
                         </div>
-                        <div className="order-itens">
-                          <span className="menu-name text">Pedidos:</span>
-                          {item.pedido.map((item, index) =>
-                            <span className="order-kitchen" key={index}> {item.nombreProducto}  {item.countProducto}</span>)}
-                          <span className="time">Tempo de preparo:{difftime}</span>
-                        </div>
-                      </div>
                     </section>
 
                     : null}
 
-                    </div>                  
+                </div>                  
 
-                )
-                })}
+              )
+              })}
 
             </div>
-        </section>
-    </section>
-
+        </div>    
+    </Fragment>
 )
- 
 }
-
 
 export default PedidosChef
