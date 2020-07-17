@@ -11,9 +11,14 @@
     display: flex;
     border-radius: 5px;
     box-shadow: 4px 4px 5px 0 hsla(0,0%,70.2%,.7);
-    align-items: center;
     min-width: 260px;
-    min-height: 250px;
-    max-width: 260px;
-    justify-content: space-around;
+    min-height: 265px;
+    max-width: 265px;
+    padding-top: 9px;
+}
+.orders{
+    margin-left: 1.3rem;
+}
+.ok{
+    margin-left: 3.5rem;
 }
