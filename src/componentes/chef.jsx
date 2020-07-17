@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from './Navbar'
+import NavbarChef from './NavbarChef'
 import PedidosChef from './PedidosChef'
 
 
 const Chef = () =>{
     return(
         <div>
-            <Navbar />
+            <NavbarChef />
             <PedidosChef />
         </div>
     )
