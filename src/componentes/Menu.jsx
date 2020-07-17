@@ -11,21 +11,23 @@ const Menu = () => {
   const [type, setType] = useState('breakfast');
   const [resumen, setResumen] = useState([]) 
  
-
-
   const addProducto = item => {
   //const valor = item.price;
     const precioProducto = parseInt(item.price);
     const nombreProducto = item.name;
     const idProducto = item.id;
     const countProducto = item.count; 
- /*   if(item.id === idProducto){ */ 
       resumen.push({idProducto, nombreProducto, precioProducto, countProducto})
       setResumen([
           ...resumen,
       ]) 
 /*      }   */
     
+  }
+  const limpiarPedido = () => {
+    if(resumen.length){
+      setResumen([])
+    }
   }
 
     return ( 
@@ -46,7 +48,7 @@ const Menu = () => {
                       Adicional
                       </button>
                   </div>
-                  <div className="btn-group-vertical w-100">
+                  <div className="card-body row btn-sm">
                     {console.log(resumen)}
                     {data.filter(item => item.type === type ).map((item, i) => (
                         <button onClick={() => addProducto(item)} value={item.price} name={item.name}
@@ -57,7 +59,7 @@ const Menu = () => {
                    
                 </div>
               </section>
-                <ResumenPedido  resumen={resumen}/>
+                <ResumenPedido  resumen={resumen} limpiarPedido={limpiarPedido} />
                 </div>
             </div>
             

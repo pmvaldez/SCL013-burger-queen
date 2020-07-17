@@ -1,6 +1,19 @@
 .section{
-    background-color: #887E36;
+    background-color:white;
     border-radius: 7px;
     padding: 18px;
-    height: 300px;
+}
+
+.columnLength {
+    flex-direction: column;
+    background-color:#887E36;
+    margin: 5px;
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 4px 4px 5px 0 hsla(0,0%,70.2%,.7);
+    align-items: center;
+    min-width: 260px;
+    min-height: 250px;
+    max-width: 260px;
+    justify-content: space-around;
 }
