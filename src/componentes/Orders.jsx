@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { db } from '../firebase'
+import NavbarOrders from './NavbarOrders'
+
 
 const Orders = () => {
     
@@ -41,6 +43,8 @@ const Orders = () => {
     }
 
   return (
+    <Fragment>
+      <NavbarOrders/>
              <section className="root-kitchen">
                 <h2 className="h2">Pronto para a Entrega</h2>
                 <div className="app-kitchen app">
@@ -73,6 +77,7 @@ const Orders = () => {
                   </div>
                 </div>
               </section>
+              </Fragment>
     
     )
 }

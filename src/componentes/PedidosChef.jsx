@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react'
 import { db } from '../firebase'
 import '../estilos/pedidoschef.css'
+/* import growl from 'growl-alert';
+import 'growl-alert/dist/growl-alert.css'; */
 const hmh = require('hmh');
+
+
 
 const PedidosChef = () => {
 
@@ -52,17 +56,17 @@ const PedidosChef = () => {
                     <div className="">
                         <section className="section" key={order.id}  >
                             <div className="row columnLength">
-                                <p className="text client-text"> Cliente: {order.cliente}</p>
-                                <p className="text client-text"> Mesas: {order.numMesa}</p>
-                                <span className="menu-name text">Pedidos:</span>
+                                <p className="text client-text orders"> Cliente: {order.cliente}</p>
+                                <p className="text client-text orders"> Mesas: {order.numMesa}</p>
+                                <span className="menu-name text orders">Pedidos:</span>
                                 {order.pedido.map(item => <span className="order-kitchen" key={item.id}>
                                     <ul>
                                         <li> {item.countProducto} {item.nombreProducto} </li>    
                                     </ul> 
                                 </span>)}
-                                <div>
-                                    <button class="btn-enviar burger-queen">Cancelar</button>
-                                    <button class="btn-enviar burger-queen" onClick={() => orderDone(order)}>Listo</button>
+                                <div className="orders footer">
+                                    <button class="btn btn-dark">Cancelar</button>
+                                    <button class="btn btn-light ok" onClick={() => orderDone(order)}>Listo</button>
                                 </div>
                             </div>
                         </section>

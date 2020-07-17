@@ -9,7 +9,7 @@ const Login = (props) => {
     const [email, setEmail] = React.useState('')
     const [pass, setPass] = React.useState('')
     const [error, setError] = React.useState(null)
-    const [esRegistro, setEsRegistro] = React.useState(true)
+    const [esLogin, setEsLogin] = React.useState(true)
     const [occupation, setOccupation] = React.useState('');
 
     const procesarDatos = e => {
@@ -36,10 +36,10 @@ const Login = (props) => {
         }
         console.log('correcto...')
         setError(null)
-        if(esRegistro){
-            registrar()
-        }else{
+        if(esLogin){
             login()
+        }else{
+            registrar()
         }
     }
     //funcion de login usuario
@@ -151,14 +151,14 @@ const Login = (props) => {
                             className="btn btn-lg btn-block btn-start"
                             type="submit"
                         >
-                            {esRegistro ? 'Registrar' : 'Acceder'}
+                            {esLogin? 'Acceder': 'Registrar' }
                         </button>
                         <button 
                             className="btn btn-sm btn-block btn-register "
                             type="button"
-                            onClick={() => setEsRegistro(!esRegistro)}
+                            onClick={() => setEsLogin(!esLogin)}
                         >
-                            {esRegistro ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?'}
+                            {esLogin ?   '¿No tienes cuenta?':'¿Ya tienes cuenta?'}
                         </button>
                     </form>
                 </div>
