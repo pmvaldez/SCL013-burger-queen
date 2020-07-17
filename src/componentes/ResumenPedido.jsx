@@ -4,35 +4,21 @@ import mas from '../imagen/aumentar.png'
 import menos from '../imagen/disminuir.png'
 import remove from '../imagen/remove.png'
 import {db, auth } from '../firebase'
+import growl from 'growl-alert';
+import 'growl-alert/dist/growl-alert.css';
+
+const effect =
+{
+  fadeAway: true,
+  fadeAwayTimeOut: 1000,
+}
 
 const ResumenPedido = (props) => {
 
     const [nombre, setNombre] = React.useState('');
     const [mesa, setMesa] = React.useState('');
     const [,setResult] = React.useState(props.resumen);
-    const [error, setError] = React.useState(null)
     
-    const procesarDatos = e => {
-        e.preventDefault()
-        if(!nombre.trim()){
-            console.log('Datos vacíos Ingrese Nombre Cliente!')
-            setError('Datos vacíos Ingrese Nombre Cliente!')
-            return
-        }
-        if(!mesa.trim()){
-            console.log('Ingrese Nombre de Mesa!')
-            setError('Ingrese Nombre de Mesa!')
-            return
-        }
-        if(!props.resumen.length){
-            console.log('Pedido vacio')
-            setError('Pedido vacio')
-            return
-        }
-        console.log('correcto...')
-        setError(null)
-    }
-
     const nombreCliente = (e) => {
         setNombre(e.target.value);
     };
@@ -75,12 +61,25 @@ const ResumenPedido = (props) => {
           hourSend: new Date().getTime(),
           uid: auth.currentUser.uid
         }
+        if(!nombre.trim()){
+            growl.warning({ text: 'Ingrese Nombre Cliente!', ...effect })
+            return
+        }
+        if(!mesa.trim()){
+            growl.warning({ text: 'Ingrese numero de Mesa!', ...effect })
+            return
+        }
+        if(!props.resumen.length){
+            growl.warning({ text: 'Pedido vacio', ...effect })
+            return
+        }
         setNombre('')
         setMesa('')
-        setResult('')
-        setError(null)
-        
-        const data = await db.collection("pedidos").add(nuevoPedido);
+        props.limpiarPedido()
+
+        growl.success({ text: 'Pedido Enviado', ...effect })
+
+        await db.collection("pedidos").add(nuevoPedido);
          
       } 
       catch (error) {
@@ -127,7 +126,7 @@ const ResumenPedido = (props) => {
                                 </th></tr>
                             </tbody>   
                         </table>
-                        <button className="btn btn-warning" type="submit" onSubmit={procesarDatos} onClick={agregarPedido} >Enviar</button>
+                        <button className="btn btn-warning" type="submit" onClick={agregarPedido} >Enviar</button>
                     </div> 
             </section>
     )
