@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react'
 import { db } from '../firebase'
 import '../estilos/pedidoschef.css'
+import Modal from "react-bootstrap/Modal";
+//import "bootstrap/dist/css/bootstrap.min.css";
+
 const hmh = require('hmh');
 
 const PedidosChef = () => {
@@ -8,6 +11,7 @@ const PedidosChef = () => {
     const [orders, getOrders] = React.useState([])
     const [orderdone, setOrderDone] = React.useState([])
     const [delivery, setDelivery] = React.useState([])
+    const [isOpen, setIsOpen] = React.useState(false);
 
     React.useEffect(() => {
         db.collection('pedidos').where('status', '==', 'pending').onSnapshot({ includeMetadataChanges: true }, (snap => {
@@ -27,6 +31,14 @@ const PedidosChef = () => {
         })
         )
     }, [])
+    
+    const showModal = () => {
+      setIsOpen(true);
+    };
+    
+    const hideModal = () => {
+      setIsOpen(false);
+    };
 
     const orderDone = (item) => {
         db.collection('pedidos').doc(item.id).update({
@@ -41,9 +53,26 @@ const PedidosChef = () => {
             orders.splice(index, 1);
         }
     }
-    
+
+/*          deleteOrder = (item) => {
+        db.collection("pedidos").doc(item.id).delete()
+        .then(() => {
+          console.log("Document successfully deleted!");
+          hideModal()
+      }).catch((error) => {
+          console.error("Error removing document: ", error);
+      });
+    }
+ */
     return (
         <Fragment>
+            <Modal show={isOpen} onHide={hideModal}>
+                <Modal.Body>¿ Estas seguro que quieres cancelar este pedido ?</Modal.Body>
+                <Modal.Footer>
+                    <button onClick={hideModal}>Cancelar</button>
+                    <button >Aceptar</button>
+                </Modal.Footer>
+            </Modal>
         <div className="container">
             <h2>Pedidos a realizar</h2>
             <div className="row row-cols-3 ">
@@ -61,9 +90,9 @@ const PedidosChef = () => {
                                     </ul> 
                                 </span>)}
                                 <div>
-                                    <button class="btn-enviar burger-queen">Cancelar</button>
+                                    <button onClick={showModal}>Cancelar</button>
                                     <button class="btn-enviar burger-queen" onClick={() => orderDone(order)}>Listo</button>
-                                </div>
+                                </div>  
                             </div>
                         </section>
                     </div>
