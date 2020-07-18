@@ -2,6 +2,9 @@ import React, { Fragment } from 'react'
 import { db } from '../firebase'
 import '../estilos/pedidoschef.css'
 import Modal from "react-bootstrap/Modal";
+import moment from "moment";
+import 'moment/locale/es';
+
 
 const hmh = require('hmh');
 
@@ -84,6 +87,7 @@ const PedidosChef = () => {
                             <div className="row columnLength">
                                 <p className="text client-text orders"> Cliente: {order.cliente}</p>
                                 <p className="text client-text orders"> Mesas: {order.numMesa}</p>
+                                <p className="text client-text orders"> Hora{moment(order.orhourDone).format('LLL')}</p>
                                 <span className="menu-name text orders">Pedidos:</span>
                                 {order.pedido.map(item => <span className="order-kitchen" key={item.id}>
                                     <ul>

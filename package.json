@@ -11,6 +11,7 @@
     "firebaseui": "^4.5.1",
     "growl-alert": "^1.0.1",
     "hmh": "^2.0.4",
+    "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-bootstrap-modal": "^4.2.0",
