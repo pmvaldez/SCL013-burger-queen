@@ -58,7 +58,7 @@ const ResumenPedido = (props) => {
           numMesa: mesa,
           status: 'pending',
           hourSend: new Date().getTime(),
-          //uid: auth.currentUser.uid
+          uid: auth.currentUser.uid
         } 
         if(!nombre.trim()){
             growl.warning({ text: 'Ingrese Nombre Cliente!', ...effect })
