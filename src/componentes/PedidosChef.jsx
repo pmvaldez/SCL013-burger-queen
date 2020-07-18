@@ -2,6 +2,9 @@ import React, { Fragment } from 'react'
 import { db } from '../firebase'
 import '../estilos/pedidoschef.css'
 import Modal from "react-bootstrap/Modal";
+import moment from "moment";
+import 'moment/locale/es';
+
 
 const hmh = require('hmh');
 
@@ -70,8 +73,8 @@ const PedidosChef = () => {
             <Modal show={isOpen} onHide={hideModal}>
                 <Modal.Body>¿ Estas seguro que quieres cancelar este pedido ?</Modal.Body>
                 <Modal.Footer>
-                    <button onClick={hideModal}>Cancelar</button>
-                    <button >Aceptar</button>
+                    <button class="btn btn-dark" onClick={hideModal}>Cancelar</button>
+                    <button class="btn btn-warning">Aceptar</button>
                 </Modal.Footer>
             </Modal>
         <div className="container">
@@ -79,11 +82,12 @@ const PedidosChef = () => {
             <div className="row row-cols-3 ">
                 {orders.map((order) => { 
                 return (
-                    <div className="">
+                    <div className="h5">
                         <section className="section" key={order.id}  >
                             <div className="row columnLength">
                                 <p className="text client-text orders"> Cliente: {order.cliente}</p>
                                 <p className="text client-text orders"> Mesas: {order.numMesa}</p>
+                                <p className="text client-text orders"> Hora{moment(order.orhourDone).format('LLL')}</p>
                                 <span className="menu-name text orders">Pedidos:</span>
                                 {order.pedido.map(item => <span className="order-kitchen" key={item.id}>
                                     <ul>
@@ -103,26 +107,24 @@ const PedidosChef = () => {
         </div>
        
         <div className="container">
-          <h2 className="h2">Pedidos entregues</h2>
-          <div className="col-sm-6">
+          <h2 className="h2">Pedidos entregados</h2>
+          <div className="row row-cols-3 ">
               {delivery.map((item, index) => {
               const send = `${new Date(item.hourSend).getHours()}h ${new Date(item.hourSend).getMinutes()}m`;
               const hDelivered = `${new Date(item.hourDelivered).getHours()}h ${new Date(item.hourDelivered).getMinutes()}m`;
               const difftime = (hmh.diff(`${send}`, `${hDelivered}`).toString());
               return (
-                <div className="order-done" key={index} >
+                <div className="h5" key={index} >
                     {item.status === 'delivered' ?
                     <section className="section">
-                        <div className="order-div">
+                        <div className="row time">
                             <div className="menu-name">
                                 <p className="card-title"> Cliente: {item.cliente}</p>
                                 <p className="card-title"> Mesa: {item.numMesa}</p>
-                            </div>
-                            <div className="order-itens">
                                 <span className="menu-name text">Pedidos:</span>
                                 {item.pedido.map((item, index) =>
-                                <span className="order-kitchen" key={index}> {item.nombreProducto}  {item.countProducto}</span>)}
-                                <span className="time">Tempo de preparo:{difftime}</span>
+                                <span className="order-kitchen" key={index}> {item.countProducto} {item.nombreProducto}</span>)}
+                                <span className="time">Tiempo de preparacion:{difftime}</span>
                             </div>
                         </div>
                     </section>
