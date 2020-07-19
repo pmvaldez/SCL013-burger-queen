@@ -5,7 +5,7 @@
 * [1. Preámbulo](#1-preámbulo)
 * [2. Resumen del proyecto](#2-resumen-del-proyecto)
 * [3. Enfoque de Usuario](#3-enfoque-de-usuario)
-* [4. Consideraciones generales](#4-consideraciones-generales)
+* [4. Proceso de Diseño](#4-consideraciones-generales)
 * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
 * [6. Pistas, tips y lecturas complementarias](#6-pistas-tips-y-lecturas-complementarias)
 
@@ -14,7 +14,7 @@
 ## 1. Preámbulo :mag:
 El 15 de mayo de 1940, hace 80 años, se abrió el primer restaurante de Hamburguesas. Desde ese momento, toda la industria de la comida rápida ha cambiado significativamente. Y a pesar de la tendencia actual a la alimentación saludable, sigue siendo muy popular, evolucionando cada vez mas a nivel Alimenticio y Tecnológico.
 
-Es por ello que respondiendo a la solicitud de la cadena de comida **Burguer Queen** y cumpliendo con lo requerido se presenta una innovadora aplicación web que permite realizar pedidos de una forma mas rapida sencilla y eficaz, con un excelente enlace de comunicacion entre el mesonero y la cocina.
+Es por ello que respondiendo a la solicitud de la cadena de comida **Burguer Queen** y cumpliendo con lo requerido se presenta una innovadora aplicación web que permite realizar pedidos de una forma mas rapida, sencilla y eficaz, con un excelente enlace de comunicacion entre el mesonero y la cocina.
 
 ![burger-queen](https://user-images.githubusercontent.com/110297/42118136-996b4a52-7bc6-11e8-8a03-ada078754715.jpg)
 
@@ -36,4 +36,30 @@ Realizando envio del pedido a la cocina.se permite que el personal de la cocina 
 | **N°4** Yo como meserx quiero ver los pedidos que están preparados para entregarlos rápidamente a los clientes que las hicieron.               | -Ver listado de pedido listos para servir, Marcar pedidos que han sido entregados.                            | El meserox puede ver los pedidos listos por cocina y marcarlos como entregados.                                    |
 
 
-### HTML y CSS
+## 4. Proceso de Diseño (Prototipado) :pencil2::
+
+⦁	Flujograma realizado para la organización y estructura del sitio web:
+
+**Imagen ACA**
+
+⦁	Boceto de prototipo de baja fidelidad en lápiz y papel:
+
+Al realizar este primer prototipo nos enfocamos en los aspectos mas relevantes entregados por el cliente.
+
+**Cargar Imagen prototipo en papel** 
+
+⦁	Prototipo de Alta Fidelidad:
+
+Una vez que concluímos nuestro protipo de baja fidelidad, consultamos con nuestros usuarios sobre el contenido y las interacciones que tendrían, y comenzamos a definir un prototipo de alta fidelidad según sus necesidades.
+
+Utilizamos la herramienta de Figma [link](https://www.figma.com/proto/PzljuiRKFajp73psxZ6l70/Burguen-Queen?node-id=2%3A0&scaling=scale-down) generando la primera presentación visual y para que los usuarios pudieran recorrerlo con interacciones, simulando el flujo de la plataforma web.
+
+Para organizarnos de forma óptima :bookmark_tabs: utilizamos la herramienta de Trello  [link](https://trello.com/b/V7z8l6tI/burguer-queen) acá.
+
+## 5. Diseño de la Interfaz :computer:
+
+⦁ Paleta de colores: 
+**Imagen ACA**
+
+⦁ Interfaz:
+**Imagen ACA**
