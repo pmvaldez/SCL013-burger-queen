@@ -17,9 +17,9 @@ const Navbar = (props) => {
 
     return (
         <div className="navbar navbar-dark bg-dark">
-
-            <h2 className="mr-auto textNav">Mesero</h2> 
-            <img className="navLogo" alt="logo" src={logo}/>
+            
+            <h2 className="mr-auto textNav">Mesero</h2>
+            <img className="navLogo"alt="logo" src={logo}/>
             <div>
                 <div className="d-flex ml-auto">
                     <NavLink 

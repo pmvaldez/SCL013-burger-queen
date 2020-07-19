@@ -15,6 +15,9 @@
     min-height: 265px;
     max-width: 265px;
     padding-top: 9px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
 }
 .orders{
     margin-left: 1.3rem;
@@ -34,4 +37,7 @@
     min-height: 250px;
     max-width: 265px;
     padding-top: 9px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
 }

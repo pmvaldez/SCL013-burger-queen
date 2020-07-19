@@ -88,11 +88,11 @@ const ResumenPedido = (props) => {
     } 
 
     return (
-            <section className="listaprecios col-lg-6  ">
-                <label> Nombre <input type="text" onChange={nombreCliente} placeholder='Ignacio' value={nombre} /> </label>
-                <label> N° de Mesa <input className="inputMesa" type="text" onChange={numeroMesa} placeholder='1' value={mesa} /> </label>
+            <section className="listaprecios col-lg-6 font-italic">
+                <label className="h5"> Nombre <input type="text" onChange={nombreCliente} placeholder='' value={nombre} /> </label>
+                <label className="h5"> N° de Mesa <input className="inputMesa" type="text" onChange={numeroMesa} placeholder='' value={mesa} /> </label>
                     <div className= "container"> 
-                        <h1 className="text-center ">Pedido</h1>
+                        <h1 className="text-center">Pedido</h1>
                         <table className="table table-sm ">
                             <thead>
                                 <tr>

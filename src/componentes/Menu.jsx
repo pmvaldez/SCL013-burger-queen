@@ -34,7 +34,7 @@ const Menu = () => {
               <div className="container ctnMenuResumen mt-2">  
               <div className="row">
               <section className="col-sm-6"> 
-                  <div className="btn-group">
+                  <div className="btn-group-lg font-italic">
                       <button type="button" className="text-white btn btn-dark m-1" onClick={() => setType('breakfast')}>
                       Desayuno
                       </button>
@@ -48,12 +48,12 @@ const Menu = () => {
                       Adicional
                       </button>
                   </div>
-                  <div className="card-body row btn-sm">
+                  <div className="btn-group-lg font-italic">
                     {console.log(resumen)}
                     {data.filter(item => item.type === type ).map((item, i) => (
                         <button onClick={() => addProducto(item)} value={item.price} name={item.name}
                          id={item.id}
-                         className="btn-sm btn-color w-50 mt-2" key={i}>{item.name} ${item.price}</button>
+                          type="button" className="btn color m-1" key={i}>{item.name} ${item.price}</button>
                         
                     ))}
                    
