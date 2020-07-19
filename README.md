@@ -40,7 +40,7 @@ Realizando envio del pedido a la cocina.se permite que el personal de la cocina 
 
 ⦁	Flujograma realizado para la organización y estructura del sitio web:
 
-**Imagen ACA**
+![Screenshotpaleta](src/imagen/FlujoBurger.PNG.png)
 
 ⦁	Boceto de prototipo de baja fidelidad en lápiz y papel:
 
@@ -59,10 +59,10 @@ Para organizarnos de forma óptima :bookmark_tabs: utilizamos la herramienta de 
 ## 5. Diseño de la Interfaz :computer:
 
 ⦁ Paleta de colores: 
-**Imagen ACA**
+![Screenshotpaleta](src/imagen/Paleta_de_Colores.jpg)
 
 ⦁ Interfaz:
-**Imagen ACA**
+![Screenshotpaleta](src/imagen/material.PNG)
 
 
 ## Autoras 
