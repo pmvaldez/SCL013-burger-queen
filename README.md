@@ -5,9 +5,8 @@
 * [1. Preámbulo](#1-preámbulo)
 * [2. Resumen del proyecto](#2-resumen-del-proyecto)
 * [3. Enfoque de Usuario](#3-enfoque-de-usuario)
-* [4. Proceso de Diseño](#4-consideraciones-generales)
-* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Pistas, tips y lecturas complementarias](#6-pistas-tips-y-lecturas-complementarias)
+* [4. Proceso de Diseño](#4-proceso-de-diseño)
+* [5. Diseño de la Interfaz](#5-diseño-de-la-interfaz)
 
 ***
 
@@ -20,11 +19,16 @@ Es por ello que respondiendo a la solicitud de la cadena de comida **Burguer Que
 
 ## 2. Resumen del proyecto :pencil:
 
-El producto fue desarrollado en React y le permite al restaurante mantener registros individuales de cada mesero y empleado de cocina que inician sesión con sus contraseñas personales creadas por un administrador. 
+El producto fue desarrollado en React y le permite al restaurante mantener registros individuales de cada empleado para el inicio de sesión, estableciendo contraseñas personales creadas por un administrador. 
 
-**Su Uso**
-Se permite al mesero incluir y excluir artículos de los pedidos de los clientes, ver el pedido completo, incluida la cantidad de artículos, el precio unitario y total.
-Realizando envio del pedido a la cocina.se permite que el personal de la cocina reciba todos los pedidos enviados en el salón para su preparación.
+### Uso
+⦁ Se permite al meserx incluir y excluir artículos de los pedidos que son realizados a cliente. 
+
+⦁ Vizualizar el pedido completo, incluyendo la cantidad de artículos, el precio unitario y total.
+
+⦁ Realizando envio del pedido, se permite que el personal de la cocina reciba todos los pedidos enviados en el salón para su preparación.
+
+⦁ Se permite que desde cocina se de OK de la orden lista para entrega y esta sea vizualizada desde la vista del meserx.
 
 ## 3. Enfoque de Usuario :busts_in_silhouette:
 
@@ -59,9 +63,11 @@ Para organizarnos de forma óptima :bookmark_tabs: utilizamos la herramienta de 
 ## 5. Diseño de la Interfaz :computer:
 
 ⦁ Paleta de colores: 
+
 ![Screenshotpaleta](src/imagen/Paleta_de_Colores.jpg)
 
 ⦁ Interfaz:
+
 ![Screenshotpaleta](src/imagen/material.PNG)
 
 
