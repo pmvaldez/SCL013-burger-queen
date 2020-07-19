@@ -48,6 +48,8 @@ El producto fue desarrollado en React y le permite al restaurante mantener regis
 
 ⦁	Boceto de prototipo de baja fidelidad en lápiz y papel:
 
+![Screenshotpaleta](src/imagen/boceto.jpg)
+
 Al realizar este primer prototipo nos enfocamos en los aspectos mas relevantes entregados por el cliente.
 
 **Cargar Imagen prototipo en papel** 
