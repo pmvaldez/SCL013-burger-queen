@@ -1,0 +1,19 @@
+.waitercheck{
+    flex-direction: column;
+    background-color: #F3EBA3;
+    margin: 5px;
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 4px 4px 5px 0 hsla(0,0%,70.2%,.7);
+    min-width: 260px;
+    min-height: 265px;
+    max-width: 265px;
+    padding-top: 9px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+.orders{
+    margin-left: 1.3rem;
+    width: fit-content;
+}

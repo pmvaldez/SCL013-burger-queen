@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react'
 import { db } from '../firebase'
 import NavbarOrders from './NavbarOrders'
+import '../estilos/orders.css'
+import moment from "moment";
+import 'moment/locale/es';
 
 
 const Orders = () => {
@@ -34,7 +37,7 @@ const Orders = () => {
             hourDelivered: new Date().getTime()
           })
           .then(() => {
-            setDelivery([...delivery, { ...item, status: 'delivered', hourDelivered: new Date().getTime() }])
+            setDelivery([...delivery, { ...item, status: 'delivered', hourDelivered:   new Date().getTime() }])
           })
         if (item.status === 'done') {
           const index = orderdone.findIndex((i) => i.id === item.id)
@@ -45,21 +48,20 @@ const Orders = () => {
   return (
     <Fragment>
       <NavbarOrders/>
-             <section className="root-kitchen">
+             <section className="container">
                 <h2 className="h2">Pronto para a Entrega</h2>
-                <div className="app-kitchen app">
-                  <div className="order-done">
+                  <div className="row row-cols-3">
                     {orderdone.map((item) => {
                       return (
-                        <section className="section" key={item.id}  >
+                        <section className="section h5 font-italic" key={item.id}  >
                           {item.status === 'done' ?
-                            <div className="order-div">
-                              <div className="menu-name">
-                                <p className="text client-text"> Cliente: {item.cliente}</p>
-                                <p className="text client-text"> Mesa: {item.numMesa}</p>
-                              </div>
+                              <div className="row waitercheck">
+                                <p className="text client-text"> Dia: {moment(item.orhourDelivered).subtract(10, 'days').calendar()}</p>
+                                <p className="text client-text"> Hora: {moment(item.orhourDelivered).format('LTS')}</p>
+                                <p className="text font-italic orders"> Cliente: {item.cliente}</p>
+                                <p className="text font-italic orders"> Mesa: {item.numMesa}</p>
                               <div className="order-itens" key={item.id}>
-                                <span className="menu-name text">Pedidos:</span>
+                                <span className="menu-name text-light h5">Pedido</span>
                                 {item.pedido.map(item => <span className="order-kitchen" key={item.id}>
                                     <ul>
                                         <li> {item.countProducto} {item.nombreProducto} </li>    
@@ -67,14 +69,13 @@ const Orders = () => {
                                 </span>
                                 )}
                               </div>
-                              <button class="btn-enviar burger-queen" onClick={(e) => delivered(item, e)}>Entregue</button>
+                              <button class="btn btn-dark" onClick={(e) => delivered(item, e)}>Entregado</button>
                             </div>
 
                             : null}
                         </section>
                       )
                     })}
-                  </div>
                 </div>
               </section>
               </Fragment>

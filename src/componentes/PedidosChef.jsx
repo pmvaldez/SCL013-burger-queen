@@ -16,6 +16,7 @@ const PedidosChef = () => {
     const [orderdone, setOrderDone] = React.useState([])
     const [delivery, setDelivery] = React.useState([])
     const [isOpen, setIsOpen] = React.useState(false);
+    const [,setDeleteOrder] = React.useState([])
 
     React.useEffect(() => {
         db.collection('pedidos').where('status', '==', 'pending').onSnapshot({ includeMetadataChanges: true }, (snap => {
@@ -36,13 +37,34 @@ const PedidosChef = () => {
         )
     }, [])
     
-    const showModal = () => {
-      setIsOpen(true);
+    const showModal = (id) => {
+     console.log(id,'soy el id que pasa el 1 boton') 
+     setIsOpen(true);
+
     };
+
+    const deleteOrder = async (id) => {
+        try {
+          await db.collection('pedidos').doc(id).delete()
+          console.log(id) 
+
+        } catch (error) {
+          console.log(error)
+        }
+    }
+
     
     const hideModal = () => {
+      /* console.log(id)  */
       setIsOpen(false);
     };
+
+
+    /* const deleteOrder =  => {
+      db.collection("pedidos").doc(order.id).delete()
+      console.log(order.id);
+     }; */
+
 
     const orderDone = (item) => {
         db.collection('pedidos').doc(item.id).update({
@@ -70,36 +92,40 @@ const PedidosChef = () => {
  */
     return (
         <Fragment>
-            <Modal show={isOpen} onHide={hideModal}>
-                <Modal.Body>¿ Estas seguro que quieres cancelar este pedido ?</Modal.Body>
-                <Modal.Footer>
-                    <button class="btn btn-dark" onClick={hideModal}>Cancelar</button>
-                    <button class="btn btn-warning">Aceptar</button>
-                </Modal.Footer>
-            </Modal>
+          
         <div className="container">
             <h2>Pedidos a realizar</h2>
             <div className="row row-cols-3 ">
                 {orders.map((order) => { 
                 return (
-                    <div className="h5">
-                        <section className="section" key={order.id}  >
+                    <div className="h5 font-italic">
+                        <section className="section" id={order.id}>
                             <div className="row columnLength">
+                            <p className="text client-text"> Dia: {moment(order.orhourDone).subtract(10, 'days').calendar()}</p>
+                                <p className="text client-text"> Hora: {moment(order.orhourDone).format('LTS')}</p>
                                 <p className="text client-text orders"> Cliente: {order.cliente}</p>
                                 <p className="text client-text orders"> Mesas: {order.numMesa}</p>
-                                <p className="text client-text orders"> Hora{moment(order.orhourDone).format('LLL')}</p>
-                                <span className="menu-name text orders">Pedidos:</span>
+                                <span className="menu-name text text-light">Pedido</span>
                                 {order.pedido.map(item => <span className="order-kitchen" key={item.id}>
                                     <ul>
                                         <li> {item.countProducto} {item.nombreProducto} </li>    
                                     </ul> 
                                 </span>)} 
                                 <div className="orders footer">
-                                    <button class="btn btn-dark" onClick={showModal}>Cancelar</button>
-                                    <button class="btn btn-light ok" onClick={() => orderDone(order)}>Listo</button>
-                                </div>
+                                    <button  type="submit" className="btn btn-dark" onClick={() => showModal(order)}>Cancelar</button>
+                                    <button className="btn btn-light ok" onClick={() => orderDone(order)}>Listo</button>
+                               </div>
                             </div>
                         </section>
+                        <Modal show={isOpen} onHide={hideModal}>
+                          
+                                <Modal.Body>¿ Estas seguro que quieres cancelar este pedido ?</Modal.Body>
+                                <Modal.Footer>
+                                <button class="btn btn-dark" onClick={hideModal}>Cancelar</button>
+                                <button  type="submit" class="btn btn-warning"  onClick={() => deleteOrder(order.id)}>Aceptar</button>
+                                 {console.log(order.id)}
+                          </Modal.Footer>
+                          </Modal>
                     </div>
                 )
                 })}
@@ -116,26 +142,27 @@ const PedidosChef = () => {
               return (
                 <div className="h5" key={index} >
                     {item.status === 'delivered' ?
-                    <section className="section">
+                    <section className="section font-italic">
                         <div className="row time">
                             <div className="menu-name">
-                                <p className="card-title"> Cliente: {item.cliente}</p>
-                                <p className="card-title"> Mesa: {item.numMesa}</p>
-                                <span className="menu-name text">Pedidos:</span>
-                                {item.pedido.map((item, index) =>
-                                <span className="order-kitchen" key={index}> {item.countProducto} {item.nombreProducto}</span>)}
-                                <span className="time">Tiempo de preparacion:{difftime}</span>
+                                <p className="text client-text "> Dia: {moment(item.orhourDone).subtract(10, 'days').calendar()}</p>
+                                <p className="text client-text"> Hora: {moment(item.orhourDone).format('LTS')}</p>
+                                <p className="card-title orders"> Cliente: {item.cliente}</p>
+                                <p className="card-title orders"> Mesa: {item.numMesa}</p>
+                                <span className="menu-name text text-light">Pedido</span>
+                                {item.pedido.map((item, index) => <span className="order-kitchen" key={index}>
+                                 <ul>
+                                 <li> {item.countProducto} {item.nombreProducto} </li>    
+                                </ul> 
+                               </span>)}
+                                <span className="bg-dark text-light">Tiempo de preparacion:{difftime}</span>
                             </div>
                         </div>
                     </section>
-
                     : null}
-
-                </div>                  
-
+                </div>                 
               )
               })}
-
             </div>
         </div>    
     </Fragment>
