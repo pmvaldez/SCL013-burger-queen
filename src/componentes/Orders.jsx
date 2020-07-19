@@ -4,7 +4,13 @@ import NavbarOrders from './NavbarOrders'
 import '../estilos/orders.css'
 import moment from "moment";
 import 'moment/locale/es';
-
+import growl from 'growl-alert';
+import 'growl-alert/dist/growl-alert.css';
+const effect =
+{
+  fadeAway: true,
+  fadeAwayTimeOut: 1000,
+}
 
 const Orders = () => {
     
@@ -38,6 +44,7 @@ const Orders = () => {
           })
           .then(() => {
             setDelivery([...delivery, { ...item, status: 'delivered', hourDelivered:   new Date().getTime() }])
+            growl.success({ text: 'Pedido Entregado', ...effect })
           })
         if (item.status === 'done') {
           const index = orderdone.findIndex((i) => i.id === item.id)
@@ -69,7 +76,7 @@ const Orders = () => {
                                 </span>
                                 )}
                               </div>
-                              <button class="btn btn-dark" onClick={(e) => delivered(item, e)}>Entregado</button>
+                              <button class="btn btn-dark" onClick={(e) => delivered(item, e)}>Entregar</button>
                             </div>
 
                             : null}

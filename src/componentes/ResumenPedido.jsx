@@ -74,7 +74,7 @@ const ResumenPedido = (props) => {
         }
         growl.success({ text: 'Pedido Enviado', ...effect })
         console.log('pedido enviado')
-         //const data = 
+    
          await db.collection("pedidos").add(nuevoPedido);
          setNombre('')
          setMesa('')
@@ -122,11 +122,12 @@ const ResumenPedido = (props) => {
                                     )
                                 })
                                 }
+                                <div className="footer">
                                 <tr><th colSpan={7} className="textTotal"><p className="text">Total: ${props.resumen.reduce((acc, item) => acc + item.precioProducto * item.countProducto, 0)} </p>
-                                </th></tr>
+                                </th></tr></div>
                             </tbody>   
                         </table>
-                        <button className="btn btn-warning" type="submit" /* onSubmit={procesarDatos} */ onClick={agregarPedido} >Enviar</button>
+                        <button className="btn btn-warning" type="submit"  onClick={agregarPedido} >Enviar</button>
                     </div> 
             </section>
     )

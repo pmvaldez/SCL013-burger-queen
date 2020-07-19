@@ -4,7 +4,13 @@ import '../estilos/pedidoschef.css'
 import Modal from "react-bootstrap/Modal";
 import moment from "moment";
 import 'moment/locale/es';
-
+import growl from 'growl-alert';
+import 'growl-alert/dist/growl-alert.css';
+const effect =
+{
+  fadeAway: true,
+  fadeAwayTimeOut: 1000,
+}
 
 const hmh = require('hmh');
 
@@ -16,7 +22,7 @@ const PedidosChef = () => {
     const [orderdone, setOrderDone] = React.useState([])
     const [delivery, setDelivery] = React.useState([])
     const [isOpen, setIsOpen] = React.useState(false);
-    const [,setDeleteOrder] = React.useState([])
+    //const [,setDeleteOrder] = React.useState([])
 
     React.useEffect(() => {
         db.collection('pedidos').where('status', '==', 'pending').onSnapshot({ includeMetadataChanges: true }, (snap => {
@@ -72,6 +78,7 @@ const PedidosChef = () => {
             hourDone: new Date().getTime(),
         })
         .then(() => {
+            growl.success({ text: 'Pedido Listo', ...effect })
             setOrderDone([...orderdone, { ...item, status: 'done', hourDone: new Date().getTime() }])
         })
         if (item.status === 'done') {
