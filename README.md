@@ -63,3 +63,12 @@ Para organizarnos de forma óptima :bookmark_tabs: utilizamos la herramienta de 
 
 ⦁ Interfaz:
 **Imagen ACA**
+
+
+## Autoras 
+ 
+ 💻[Genesis Astete](https://github.com/GenesisAstete)
+
+ 💻[Nadia Gallardo](https://github.com/Nadia080290)
+
+ 💻 [Paula Valdez](https://github.com/pmvaldez)
