@@ -68,7 +68,6 @@ Para organizarnos de forma óptima :bookmark_tabs: utilizamos la herramienta de 
 
 ![Screenshotpaleta](src/imagen/Paleta_de_Colores.jpg)
 
-⦁ Logo:
 ![Screenshotpaleta](src/imagen/logo.jpg)
 
 ⦁ Interfaz:
