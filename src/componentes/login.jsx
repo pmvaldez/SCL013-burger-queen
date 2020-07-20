@@ -14,27 +14,23 @@ const Login = (props) => {
 
     const procesarDatos = e => {
         e.preventDefault()
-        if(!email.trim() || !pass.trim()){
-            console.log('Datos vacíos email!')
+        if(!email.trim() ){
             setError('Datos vacíos email!')
             return
         }
         if(!pass.trim()){
-            console.log('Datos vacíos pass!')
             setError('Datos vacíos pass!')
             return
         }
         if(pass.length < 6){
-            console.log('6 o más carácteres')
             setError('6 o más carácteres en pass')
             return
         }
         if(!occupation.trim()){
-            console.log('Selecciona una ocupación')
             setError('Selecciona una ocupación!')
             return
         }
-        console.log('correcto...')
+
         setError(null)
         if(esLogin){
             login()
